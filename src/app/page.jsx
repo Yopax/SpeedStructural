@@ -1,9 +1,9 @@
-import Image from 'next/image'
+import LandingPage from "@/components/01_Landing_Page/LandingPage";
 
 export default function Home() {
   return (
     <>
-    <h1>dsad</h1>
+      <LandingPage />
     </>
   )
 }

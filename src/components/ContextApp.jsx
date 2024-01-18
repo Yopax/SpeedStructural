@@ -19,7 +19,6 @@ function ContextApp() {
             </div>
             <hr className="py-4" />
             <ComponentContext0 />
-            <ComponentContext2 />
           </div>
           <hr className="my-10" />
         </div>

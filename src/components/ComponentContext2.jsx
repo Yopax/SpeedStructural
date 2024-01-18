@@ -12,19 +12,19 @@ function ComponentContext2() {
 
 
   return (
-    <div className="flex w-full space-x-4 items-center px-6 border border-solid py-6 border-[#DFE3E8]">
-        <label className="font2 inputof">Ln - Losa aligerada:</label>
-        <input className=" font2  border border-solid px-4 text-center border-[#DFE3E8] rounded-md w-[120px] text-xs py-1" type="text" placeholder="valor en cm" value={inputValue7} onChange={(e) => updateInputValue7(e.target.value)}/>
-          <label className="flex font2 inputof">Ln - Viga x-x:</label>
-          <input className=" font2 border border-solid px-4 text-center border-[#DFE3E8] rounded-md w-[120px] text-xs py-1" type="text" value={inputValue8} onChange={(e) => updateInputValue8(e.target.value)}/>
-          <label className="flex font2 inputof">Ln - Viga y-y:</label>
-          <input className=" font2 border border-solid px-4 text-center border-[#DFE3E8] rounded-md w-[120px] text-xs py-1" type="text" value={inputValue9} onChange={(e) => updateInputValue9(e.target.value)}/>
-          <label className="flex font2 inputof">AT - Columna centrada:</label>
-          <input className=" font2  border border-solid px-4 text-center border-[#DFE3E8] rounded-md w-[120px] text-xs py-1" type="text" value={inputValue10} onChange={(e) => updateInputValue10(e.target.value)}/>
-          <label className="flex font2 inputof">AT - Columna esquinada:</label>
-          <input className=" font2  border border-solid px-4 text-center border-[#DFE3E8] rounded-md w-[120px] text-xs py-1" type="text" value={inputValue11} onChange={(e) => updateInputValue11(e.target.value)}/> 
-          <label className="flex font2 inputof">AT - Columna exentrica:</label>
-          <input className=" font2 border border-solid px-4 text-center border-[#DFE3E8] rounded-md w-[120px] text-xs py-1" type="text" value={inputValue12} onChange={(e) => updateInputValue12(e.target.value)}/> 
+    <div className="flex flex-col items-center bg-emerald-600">
+        <label className="text-xs text-white font-medium mx-2">Ln - Losa aligerada:</label>
+        <input className="   border border-solid  text-center border-[#DFE3E8] w-[120px] text-xs py-1" type="text" placeholder="valor en cm" value={inputValue7} onChange={(e) => updateInputValue7(e.target.value)}/>
+          <label className="text-xs text-white font-medium mx-2">Ln - Viga x-x:</label>
+          <input className="  border border-solid  text-center border-[#DFE3E8] w-[120px] text-xs py-1" type="text" value={inputValue8} onChange={(e) => updateInputValue8(e.target.value)}/>
+          <label className="text-xs text-white font-medium mx-2">Ln - Viga y-y:</label>
+          <input className="  border border-solid  text-center border-[#DFE3E8] w-[120px] text-xs py-1" type="text" value={inputValue9} onChange={(e) => updateInputValue9(e.target.value)}/>
+          <label className="text-xs text-white font-medium mx-2">AT - Columna centrada:</label>
+          <input className="   border border-solid  text-center border-[#DFE3E8] w-[120px] text-xs py-1" type="text" value={inputValue10} onChange={(e) => updateInputValue10(e.target.value)}/>
+          <label className="text-xs text-white font-medium mx-2">AT - Columna esquinada:</label>
+          <input className="   border border-solid  text-center border-[#DFE3E8] w-[120px] text-xs py-1" type="text" value={inputValue11} onChange={(e) => updateInputValue11(e.target.value)}/> 
+          <label className="text-xs text-white font-medium mx-2">AT - Columna exentrica:</label>
+          <input className="  border border-solid  text-center border-[#DFE3E8] w-[120px] text-xs py-1" type="text" value={inputValue12} onChange={(e) => updateInputValue12(e.target.value)}/> 
     </div>
   );
 }

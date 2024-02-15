@@ -1,9 +1,8 @@
 "use client"
-// ContextApp.js
 import { ContextOneProvider } from "@/app/context/GeneralContext";
 import React from "react";
 import ComponentContext1 from "./ComponentContext1";
-import ComponentContext2 from "./ComponentContext2";
+import ComponentContext2 from "./ComponentContextPredi";
 import ComponentContext3 from "./ComponentContext3";
 import ComponentContext0 from "./ComponentContext0";
 
@@ -17,7 +16,9 @@ function ContextApp() {
               <ComponentContext1 />
             <img className="h-[300px]" src="https://i.imgur.com/UdDH2pa.jpg" alt="referencia" />
             </div>
+
             <hr className="py-4" />
+            <p className="font  font-bold">Informacion especifica</p>
             <ComponentContext0 />
           </div>
           <hr className="my-10" />

@@ -10,12 +10,35 @@ export const ContextOneProvider = ({ children }) => {
   const [inputValue4, setInputValue4] = useState("");
   const [inputValue5, setInputValue5] = useState("");
   const [inputValue6, setInputValue6] = useState("");
+
+  //PREDiMENSIONAMIENTO
   const [inputValue7, setInputValue7] = useState("");
   const [inputValue8, setInputValue8] = useState("");
   const [inputValue9, setInputValue9] = useState("");
   const [inputValue10, setInputValue10] = useState("");
   const [inputValue11, setInputValue11] = useState("");
   const [inputValue12, setInputValue12] = useState("");
+
+  const updateInputValue7 = (value) => {
+    setInputValue7(value);
+  };
+  const updateInputValue8 = (value) => {
+    setInputValue8(value);
+  };
+  const updateInputValue9 = (value) => {
+    setInputValue9(value);
+  };
+  const updateInputValue10 = (value) => {
+    setInputValue10(value);
+  };
+  const updateInputValue11 = (value) => {
+    setInputValue11(value);
+  };
+  const updateInputValue12 = (value) => {
+    setInputValue12(value);
+  };
+  //PREDIMENSIONAMIENTO
+  
   const [ocupacionUso, setOcupacionUso] = useState("");
   const [servicio, setServicio] = useState(""); 
   const [inputFc, setInputFc] = useState("");
@@ -82,24 +105,7 @@ export const ContextOneProvider = ({ children }) => {
   const updateInputValue6 = (value) => {
     setInputValue6(value);
   };
-  const updateInputValue7 = (value) => {
-    setInputValue7(value);
-  };
-  const updateInputValue8 = (value) => {
-    setInputValue8(value);
-  };
-  const updateInputValue9 = (value) => {
-    setInputValue9(value);
-  };
-  const updateInputValue10 = (value) => {
-    setInputValue10(value);
-  };
-  const updateInputValue11 = (value) => {
-    setInputValue11(value);
-  };
-  const updateInputValue12 = (value) => {
-    setInputValue12(value);
-  };
+  
   const updateOcupacionUso = (value) => {
     setOcupacionUso(value);
   };

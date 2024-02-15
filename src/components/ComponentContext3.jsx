@@ -10,6 +10,7 @@ function ComponentContext3() {
     np, ca, dx,dy,nc,pec,dx_col,dy_col,l_col,nvx, dx_vgx, dy_vgx,l_vgx,nvy,dx_vgy,dy_vgy,l_vgy,
     cv,dx_t,dy_t,cvr  } = useGeneralContext();
 
+    //Losa Aligerada
     const [roundedValue, setRoundedValue] = useState(0);
 
   useEffect(() => {
@@ -74,7 +75,7 @@ function ComponentContext3() {
   const columnas = nc*pec*dx_col*dy_col*l_col;
   const resultado_redondeado2 = Math.round(columnas * 1000) / 1000;
 
-  //Columnas primeraconst 
+  //Columnas primer PISO 
   const a = parseFloat(l_col);
   const b = parseFloat(inputValue5);
   let c = parseFloat(a+b);
@@ -410,7 +411,7 @@ function ComponentContext3() {
             <p className="font2 text-xs">
               Total :{" "}
               {resultado_redondeadop2 +
-                resultado_redondeado2 +
+                columnas2 +
                 resultado_redondeado3 +
                 resultado_redondeado4}
             </p>

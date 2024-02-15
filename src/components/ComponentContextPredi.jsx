@@ -2,6 +2,8 @@
 import React from "react";
 import { useGeneralContext } from "@/app/context/GeneralContext";
 
+const commonInputClasses = "text-gray-700 border border-solid text-center border-[#DFE3E8] w-[120px] text-xs py-1";
+
 function ComponentContext2() {
   const { inputValue7, updateInputValue7 } = useGeneralContext();
   const { inputValue8, updateInputValue8 } = useGeneralContext();
@@ -14,17 +16,17 @@ function ComponentContext2() {
   return (
     <div className="flex flex-col items-center bg-emerald-600">
         <label className="text-xs text-white font-medium mx-2">Ln - Losa aligerada:</label>
-        <input className="   border border-solid  text-center border-[#DFE3E8] w-[120px] text-xs py-1" type="text" placeholder="valor en cm" value={inputValue7} onChange={(e) => updateInputValue7(e.target.value)}/>
+        <input className={commonInputClasses} value={inputValue7} onChange={(e) => updateInputValue7(e.target.value)}/>
           <label className="text-xs text-white font-medium mx-2">Ln - Viga x-x:</label>
-          <input className="  border border-solid  text-center border-[#DFE3E8] w-[120px] text-xs py-1" type="text" value={inputValue8} onChange={(e) => updateInputValue8(e.target.value)}/>
+          <input className={commonInputClasses} value={inputValue8} onChange={(e) => updateInputValue8(e.target.value)}/>
           <label className="text-xs text-white font-medium mx-2">Ln - Viga y-y:</label>
-          <input className="  border border-solid  text-center border-[#DFE3E8] w-[120px] text-xs py-1" type="text" value={inputValue9} onChange={(e) => updateInputValue9(e.target.value)}/>
+          <input className={commonInputClasses} value={inputValue9} onChange={(e) => updateInputValue9(e.target.value)}/>
           <label className="text-xs text-white font-medium mx-2">AT - Columna centrada:</label>
-          <input className="   border border-solid  text-center border-[#DFE3E8] w-[120px] text-xs py-1" type="text" value={inputValue10} onChange={(e) => updateInputValue10(e.target.value)}/>
+          <input className={commonInputClasses} value={inputValue10} onChange={(e) => updateInputValue10(e.target.value)}/>
           <label className="text-xs text-white font-medium mx-2">AT - Columna esquinada:</label>
-          <input className="   border border-solid  text-center border-[#DFE3E8] w-[120px] text-xs py-1" type="text" value={inputValue11} onChange={(e) => updateInputValue11(e.target.value)}/> 
+          <input className={commonInputClasses} value={inputValue11} onChange={(e) => updateInputValue11(e.target.value)}/> 
           <label className="text-xs text-white font-medium mx-2">AT - Columna exentrica:</label>
-          <input className="  border border-solid  text-center border-[#DFE3E8] w-[120px] text-xs py-1" type="text" value={inputValue12} onChange={(e) => updateInputValue12(e.target.value)}/> 
+          <input className={commonInputClasses} value={inputValue12} onChange={(e) => updateInputValue12(e.target.value)}/> 
     </div>
   );
 }

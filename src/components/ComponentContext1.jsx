@@ -19,7 +19,7 @@ function ComponentContext1() {
         <input className=" text-xs border border-solid px-4 text-center border-[#DFE3E8] rounded-md w-[120px]  py-1" type="text" placeholder="Escuela, hospital,etc" value={ocupacionUso} onChange={(e) => updateOcupacionUso(e.target.value)}/>
       </div>
       <div className="flex justify-between">
-        <label className="text-xs text-white font-bold">Pservicio:</label>
+        <label className="text-xs text-white font-bold">Categoria(P):</label>
         <input className=" text-xs border border-solid px-4 text-center border-[#DFE3E8] rounded-md w-[120px]  py-1" type="text"  value={servicio} onChange={(e) => updateServicio(e.target.value)}/>
       </div>
       <div className="flex justify-between">

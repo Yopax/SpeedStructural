@@ -108,9 +108,8 @@ function ComponentContext3() {
     } else if (setRoundedValue === 30) {
       return 0.4;
     } else {
-      // Puedes manejar el caso en el que roundedValue no coincida con ninguno de los casos anteriores
-      // Puedes lanzar un error, devolver un valor predeterminado, o hacer algo más según tus necesidades.
-      return null; // Cambia esto según tus necesidades
+
+      return null; 
     }
   }
   const coninValue = getConinValue(roundedValue)

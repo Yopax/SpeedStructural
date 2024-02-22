@@ -35,7 +35,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
             Carga por área:
           </label>
           <input
-            className={claseOne} placeholder="kgf/m2"
+            className={claseOne} placeholder="tnf/m2"
             value={ca}
             onChange={(e) => updateCa(e.target.value)}
           />

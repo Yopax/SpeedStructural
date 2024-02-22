@@ -86,7 +86,7 @@ function NavBarCalculo() {
                 type="button"
                 className=" bg-emerald-600 hover:bg-blue-600 text-white text-sm leading-6 font-medium py-1 px-3 rounded-lg"
               >
-                Volver al Dashboard
+                Descargar Manual
               </button>
             </Link>
           </div>

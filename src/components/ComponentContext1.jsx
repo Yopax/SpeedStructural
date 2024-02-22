@@ -58,7 +58,7 @@ function ComponentContext1() {
           <input className={claseOne} type="text" placeholder="m" value={inputValue5} onChange={(e) => updateInputValue5(e.target.value)}/> 
        </div>
        <div className={claseDivTwo}>
-          <label className={claseTwo}>Espesor de la platea:</label>
+          <label className={claseTwo}>Espesor de la platea(si tuviera):</label>
           <input className={claseOne} type="text" placeholder="cm" value={inputValue6} onChange={(e) => updateInputValue6(e.target.value)}/>
        </div>
     </div>

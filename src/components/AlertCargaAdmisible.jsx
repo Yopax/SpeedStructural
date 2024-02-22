@@ -10,7 +10,7 @@ function AlertCargaAdmisible() {
 
       </button>
       <dialog id="my_modal_4" className="modal">
-        <div className="modal-box w-[50%] max-w-5xl">
+        <div className="modal-box w-[38%] max-w-5xl">
           <h3 className="font-bold text-lg">Capacidad Admisible del Terreno(qadm)</h3>
           <p className='text-xs font-bold my-4' >Se obtiene Mediante la siguiente formula:</p>
           <EcuacionQa/>

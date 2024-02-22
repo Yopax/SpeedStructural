@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useGeneralContext } from "@/app/context/GeneralContext";
 
 function ComponentContext3() {
-  const { inputValue1, inputValue2,inputValue3,inputValue4,inputValue5,
+  const { inputValue1, inputValue2,inputValue4,inputValue5,
     inputValue6,inputValue7,inputValue8,inputValue9,inputValue10,
     inputValue11,inputValue12,ocupacionUso,inputValue14, servicio,inputFc, tipoSuelo, capacidadAdmisible,
     np, ca, dx,dy,nc,pec,dx_col,dy_col,l_col,nvx, dx_vgx, dy_vgx,l_vgx,nvy,dx_vgy,dy_vgy,l_vgy,
@@ -140,7 +140,7 @@ function ComponentContext3() {
           Para una edificación aporticada de concreto armado de {inputValue2}{" "}
           pisos destinada para {ocupacionUso} cuyas características son: <br />
           <br />
-          Peso específico del concreto: {inputValue3} T/m^3 <br /> Altura de
+          Peso específico del concreto: {pec} T/m^3 <br /> Altura de
           entrepiso (de piso a piso): {inputValue4}m <br />
           Profundidad de desplante (contacto con platea): {inputValue5}cm <br />
           Espesor de la platea: {inputValue6}cm

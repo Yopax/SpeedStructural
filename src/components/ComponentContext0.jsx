@@ -4,7 +4,7 @@ import ComponentContext2 from "./ComponentContextPredi";
 
 const claseOne = "  text-gray-700 border border-solid rounded-md px-4 text-center border-[#DFE3E8]  w-[120px] text-xs py-1";
 const claseTwo = "text-xs text-white font-medium mx-2 ";
-const claseDivOne = " flex flex-col self-center text-white items-center justify-center text-center  font-bold m-2 rounded-md h-80 bg-emerald-600";
+const claseDivOne = " flex flex-col self-center text-white items-center justify-center text-center  m-2 rounded-md h-80 bg-emerald-600";
 function ComponentContext0() {
   const { np, ca, dx,dy,nc,pec,dx_col,dy_col,
   l_col,nvx, dx_vgx, dy_vgx,l_vgx,nvy,dx_vgy,dy_vgy,l_vgy
@@ -27,7 +27,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
             Numero de paños:
           </label>
           <input
-            className={claseOne}
+            className={claseOne} placeholder="und"
             value={np}
             onChange={(e) => updateNp(e.target.value)}
           />
@@ -35,23 +35,16 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
             Carga por área:
           </label>
           <input
-            className={claseOne}
+            className={claseOne} placeholder="kgf/m2"
             value={ca}
             onChange={(e) => updateCa(e.target.value)}
           />
-          <label className={claseTwo}>
-            Peso especifico:
-          </label>
-          <input
-            className={claseOne}
-            value={pec}
-            onChange={(e) => updatePec(e.target.value)}
-          />
+          
           <label className={claseTwo}>
             Dim en x del paño :
           </label>
           <input
-            className={claseOne}
+            className={claseOne} placeholder="m"
             value={dx}
             onChange={(e) => updateDx(e.target.value)}
           />
@@ -59,18 +52,26 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
             Dim en x del paño :
           </label>
           <input
-            className={claseOne}
+            className={claseOne} placeholder="m"
             value={dy}
             onChange={(e) => updateDy(e.target.value)}
           />
         </div>
         <div className={claseDivOne}>
-        <p  className="mb-10">Columnas</p>
+        <p >Columnas</p>
+        <label className={claseTwo}>
+            Peso especifico - concreto:
+          </label>
+          <input
+            className={claseOne} placeholder="tn/m3"
+            value={pec}
+            onChange={(e) => updatePec(e.target.value)}
+          />
         <label className={claseTwo}>
           Numero de columnas :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="und"
           value={nc}
           onChange={(e) => updateNc(e.target.value)}
         />
@@ -78,7 +79,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           Dim x de la columna :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="m"
           value={dx_col}
           onChange={(e) => updateDx_col(e.target.value)}
         />
@@ -86,7 +87,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           Dim y de la columna :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="m"
           value={dy_col}
           onChange={(e) => updateDy_col(e.target.value)}
         />
@@ -94,7 +95,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           Longitud de la columna :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="m"
           value={l_col}
           onChange={(e) => updateL_col(e.target.value)}
         />
@@ -105,7 +106,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           Numero de vigas en x :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="und"
           type="text"
           value={nvx}
           onChange={(e) => updateNvx(e.target.value)}
@@ -114,7 +115,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           Dim en x de la vigax :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="m"
           type="text"
           value={dx_vgx}
           onChange={(e) => updateDx_vgx(e.target.value)}
@@ -123,7 +124,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           Dim en y de la vigax :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="m"
           type="text"
           value={dy_vgx}
           onChange={(e) => updateDy_vgx(e.target.value)}
@@ -132,7 +133,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           Longitud de la vigax :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="m"
           type="text"
           value={l_vgx}
           onChange={(e) => updateL_vgx(e.target.value)}
@@ -144,7 +145,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           Numero de vigas en y :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="und"
           type="text"
           value={nvy}
           onChange={(e) => updateNvy(e.target.value)}
@@ -153,7 +154,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           Dim en x de la vigay :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="m"
           type="text"
           value={dx_vgy}
           onChange={(e) => updateDx_vgy(e.target.value)}
@@ -162,7 +163,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           Dim en y de la vigay :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="m"
           type="text"
           value={dy_vgy}
           onChange={(e) => updateDy_vgy(e.target.value)}
@@ -171,7 +172,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           Longitud de la vigay :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="m"
           type="text"
           value={l_vgy}
           onChange={(e) => updateL_vgy(e.target.value)}
@@ -183,7 +184,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           CV techo ultimo piso :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="tn/m2"
           type="text"
           value={cv}
           onChange={(e) => updateCv(e.target.value)}
@@ -192,7 +193,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           CV techo demas pisos :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="tn/m2"
           type="text"
           value={cvr}
           onChange={(e) => updateCvr(e.target.value)}
@@ -201,7 +202,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           ancho del plano :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="m"
           type="text"
           value={dx_t}
           onChange={(e) => updateDx_t(e.target.value)}
@@ -210,7 +211,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           largo del plano :
         </label>
         <input
-          className={claseOne}
+          className={claseOne} placeholder="m"
           type="text"
           value={dy_t}
           onChange={(e) => updateDy_t(e.target.value)}

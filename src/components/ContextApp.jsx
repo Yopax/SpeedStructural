@@ -5,13 +5,16 @@ import ComponentContext1 from "./ComponentContext1";
 import ComponentContext2 from "./ComponentContextPredi";
 import ComponentContext3 from "./ComponentContext3";
 import ComponentContext0 from "./ComponentContext0";
+import NavBarCalculo from "./NavBarCalculo";
 
 function ContextApp() {
   return (
     <ContextOneProvider>
-      <div className="flex flex-col space-x-4 mx-8 mt-8 justify-center">
+      <NavBarCalculo />
+      <div className="mt-[63px] flex flex-col space-x-4 mx-8 justify-center">
         <div className="flex flex-col">
           <div className="flex flex-col w-full space-y-2">
+            
             <div className="flex space-x-12 my-8 w-full items-center justify-center rounded-lg">
               <ComponentContext1 />
             <img className="h-[300px]" src="https://i.imgur.com/UdDH2pa.jpg" alt="referencia" />

@@ -17,9 +17,6 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
   return (
     <>
       <div className="w-full text-center items-center p-2 grid grid-cols-6 max-[1024px]:grid-cols-3 max-[768px]:grid-cols-2 max-[425px]:grid-cols-1 justify-center mt-8 mb-8 ">
-      <div className="flex flex-col text-white items-center justify-center  font-bold m-2 rounded-md h-80 bg-emerald-600">
-          <ComponentContext2 />
-        </div>
         <div className={claseDivOne}>
   
           <p  className="mb-2">Paños</p>

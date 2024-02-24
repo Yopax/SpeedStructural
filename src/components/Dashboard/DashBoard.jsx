@@ -11,8 +11,8 @@ function DashBoard() {
       <div className="flex">
         <div className="flex">
           <Menu />
-          <div className="flex flex-col">
-            <CardOne  />
+          <div className="flex">
+            
             <Carrosel />
           </div>
         </div>

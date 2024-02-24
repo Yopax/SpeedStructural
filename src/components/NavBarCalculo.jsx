@@ -49,10 +49,10 @@ function NavBarCalculo() {
               <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <Link href="/">
                   <div className="flex ml-[50px] max-[425px]:ml-0 ">
-                    <h5 className="font-bold mr-1 text-blue-600 hover:text-emerald-500 max-[768px]:text-[16px] ">
+                    <h5 className="font-bold mr-1 text-sky-700 hover:text-emerald-600 max-[768px]:text-[16px] ">
                       Speed
                     </h5>
-                    <h5 className="font-bold  text-emerald-600 hover:text-blue-600 max-[768px]:text-[16px]">
+                    <h5 className="font-bold  text-emerald-600 hover:text-sky-700 max-[768px]:text-[16px]">
                       Structural
                     </h5>
                     <h5 className="font-bold  max-[768px]:text-[16px]">.</h5>

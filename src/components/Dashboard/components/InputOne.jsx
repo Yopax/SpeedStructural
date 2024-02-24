@@ -5,7 +5,7 @@ import { IoSearch } from "react-icons/io5";
 function InputOne() {
   return (
     <>
-        <div className="flex w-[510px] rounded bg-white">
+        <div className="flex w-[450px] rounded bg-white">
           <input
             className=" w-full border-none bg-transparent px-4 py-1 text-gray-600 outline-none focus:outline-none "
             type="search"

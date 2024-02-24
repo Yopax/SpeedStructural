@@ -18,6 +18,16 @@ export const ContextOneProvider = ({ children }) => {
   const [inputValue10, setInputValue10] = useState("");
   const [inputValue11, setInputValue11] = useState("");
   const [inputValue12, setInputValue12] = useState("");
+  const [perimetroA, setPerimetroA] = useState("");
+  const [perimetroB, setPerimetroB] = useState("");
+
+  const updatePerimetroA = (value) => {
+    setPerimetroA(value);
+  };
+  const updatePerimetroB = (value) => {
+    setPerimetroB(value);
+  };
+
 
   const updateInputValue7 = (value) => {
     setInputValue7(value);
@@ -198,7 +208,7 @@ export const ContextOneProvider = ({ children }) => {
         updateOcupacionUso,updateServicio, inputFc, updateInputFc, tipoSuelo, updateTipoSuelo, capacidadAdmisible, updatCapacidadAdmisible
         ,updateNp,updateCa,updateDx,updateDy,updateNc,updatePec,updateDx_col,updateDy_col,updateL_col,updateNvx,updateDx_vgx,updateDy_vgx,updateL_vgx, 
         updateNvy,updateDx_vgy,updateDy_vgy,updateL_vgy,updateCv,updateDx_t,updateDy_t, np, ca, dx, dy, nc, pec, dx_col, dy_col, l_col, nvx, dx_vgx, dy_vgx, 
-        l_vgx, nvy, dx_vgy, dy_vgy, l_vgy, cv, dx_t, dy_t, cvr, updateCvr,
+        l_vgx, nvy, dx_vgy, dy_vgy, l_vgy, cv, dx_t, dy_t, cvr, updateCvr, perimetroA, perimetroB, updatePerimetroA, updatePerimetroB,
         
       }}
     >

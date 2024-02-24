@@ -1,5 +1,4 @@
 import React from 'react'
-import { BsInfoSquareFill } from "react-icons/bs";
 import EcuacionQa from './EcuacionQa';
 
 function AlertCargaAdmisible() {

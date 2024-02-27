@@ -6,7 +6,9 @@ import AlertLosaOne from "./AlertLosaOne";
 
 const commonInputClasses = "text-gray-700 border border-solid rounded-md text-center border-gray-300 w-[120px] text-xs py-1";
 const claseOne = "font justify-between  text-xs mx-2";
-const subTitle = "text-xs text-sky-700 font-bold my-2";
+const subTitle = "text-xs text-white font-bold my-2";
+const claseTwo = "text-xs text-white font-medium mx-2 ";
+const claseDivOne = " flex flex-col self-center text-white items-center justify-center text-center m-2 rounded-md h-72 w-44 bg-emerald-700"
 
 
 //Formula para calcular la losa aligerada para las tres formas
@@ -29,6 +31,34 @@ function ComponentContext2() {
   const {inputValue2, updateInputValue2} = useGeneralContext();
   const {tipoSuelo, updateTipoSuelo} = useGeneralContext();
   const {capacidadAdmisible, updatCapacidadAdmisible} = useGeneralContext();
+  const {np, updateNp} = useGeneralContext();
+  const {ca, updateCa} = useGeneralContext();
+  const {dx, updateDx} = useGeneralContext();
+  const {dy, updateDy} = useGeneralContext();
+  const {pec, updatePec} = useGeneralContext();
+  const {nc, updateNc} = useGeneralContext();
+  const {dx_col, updateDx_col} = useGeneralContext();
+  const {dy_col, updateDy_col} = useGeneralContext();
+  const {l_col, updateL_col} = useGeneralContext();
+  const {nvx, updateNvx} = useGeneralContext();
+  const {dx_vgx, updateDx_vgx} = useGeneralContext();
+  const {dy_vgx, updateDy_vgx} = useGeneralContext();
+  const {l_vgx, updateL_vgx} = useGeneralContext();
+  const {nvy, updateNvy} = useGeneralContext();
+  const {dx_vgy, updateDx_vgy} = useGeneralContext();
+  const {dy_vgy, updateDy_vgy} = useGeneralContext();
+  const {l_vgy, updateL_vgy} = useGeneralContext();
+  const {cv, updateCv} = useGeneralContext();
+  const {cvr, updateCvr} = useGeneralContext();
+  const {dx_t, updateDx_t} = useGeneralContext();
+  const {dy_t, updateDy_t} = useGeneralContext();
+  const {inputValue4, updateInputValue4} = useGeneralContext();
+  const {inputValue5, updateInputValue5} = useGeneralContext();
+  const {inputValue6, updateInputValue6} = useGeneralContext();
+
+
+
+
  
 
 
@@ -149,14 +179,17 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
    const zapataexcentrica = pservicio3/(tipoSuelo*capacidadAdmisible);
    const azapataexcentrica = Math.ceil(Math.sqrt(zapataexcentrica) / 5) * 5
 
+
+   
+
   return (
     <>
       <div>
         <hr />
         <div className="flex">
-          <div className="mr-[110px]">
+          <div className="my-2  mr-[110px] bg-emerald-700 w-[320px] p-4 rounded-md">
             <p className={subTitle}>Losas - Ingresa los datos solicitados:</p>
-            <div className="my-4">
+            <div className="flex my-4 justify-between">
               <label className={claseOne}>Ln - Losa aligerada:</label>
               <input
                 className={commonInputClasses}
@@ -166,7 +199,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               />
             </div>
             <p className={subTitle}>Para la losa maciza bidimensional</p>
-            <div className="my-4">
+            <div className="flex my-4 justify-between">
               <label className={claseOne}>Largo en el eje x-x:</label>
               <input
                 className={commonInputClasses}
@@ -175,7 +208,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
                 onChange={(e) => updatePerimetroA(e.target.value)}
               />
             </div>
-            <div className="my-4">
+            <div className="flex my-4 justify-between">
               <label className={claseOne}>Largo en el eje y-y:</label>
               <input
                 className={commonInputClasses}
@@ -218,10 +251,10 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
       </div>
 
       <div className="flex ">
-        <div className=" mr-[70px]">
+        <div className="my-2 mr-[70px] bg-emerald-700 w-[320px] p-4 rounded-md">
           <p className={subTitle}>Vigas- Ingresa los datos solicitados:</p>
           
-          <div className="flex w-[280px] justify-between my-4">
+          <div className="flex w-[290px] justify-between my-4">
             <label className={claseOne}>Ln - Viga en el eje x-x:</label>
             <input
               className={commonInputClasses}
@@ -230,7 +263,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               onChange={(e) => updateInputValue8(e.target.value)}
             />
           </div>
-          <div className="flex w-[280px] justify-between my-4">
+          <div className="flex w-[290px] justify-between my-4">
             <label className={claseOne}>Ln - Viga en el eje y-y:</label>
             <input
               className={commonInputClasses}
@@ -338,9 +371,9 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
         <hr className="my-2" />
 
       <div className="flex ">
-        <div className="mr-[100px]">
+        <div className="my-2 mr-[70px] bg-emerald-700 w-[320px] p-4 rounded-md">
           <p className={subTitle}>Zapatas - Ingresa los datos solicitados:</p>
-          <div className="flex w-[280px] justify-between my-4">
+          <div className="flex w-[290px] justify-between my-4">
             <label className={claseOne}>Coeficiente del suelo(k):</label>
             <input
               className={commonInputClasses}
@@ -349,7 +382,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               onChange={(e) => updateTipoSuelo(e.target.value)}
             />
           </div>
-          <div className="flex w-[280px] justify-between my-4">
+          <div className="flex w-[290px] justify-between my-4">
             <label className={claseOne}>Capacidad admisible:</label>
             <input
               className={commonInputClasses}
@@ -408,7 +441,218 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
           dimensiones tentativas a los elementos estructurales, si realizamos un buen predimensionamiento podemos lograr 
           que las dimensiones tentativas sean las finales, y así ahorrar tiempo, esto dependera mucho de la 
           experiencia del Ingeniero. 
-          </p>
+        </p>
+
+        <div className="w-screen justify-center text-center items-center p-2 grid grid-cols-7 max-[1024px]:grid-cols-3 max-[768px]:grid-cols-2 max-[425px]:grid-cols-1 mt-8 mb-8 ">
+        <div className={claseDivOne}>
+  
+          <p  className="mb-2">Paños</p>
+          <label className={claseTwo}>
+            Numero de paños:
+          </label>
+          <input
+            className={commonInputClasses} placeholder="und"
+            value={np}
+            onChange={(e) => updateNp(e.target.value)}
+          />
+          <label className={claseTwo}>
+            Carga por área:
+          </label>
+          <input
+            className={commonInputClasses} placeholder="tnf/m2"
+            value={ca}
+            onChange={(e) => updateCa(e.target.value)}
+          />
+          
+          <label className={claseTwo}>
+            Dim en x del paño :
+          </label>
+          <input
+            className={commonInputClasses} placeholder="m"
+            value={dx}
+            onChange={(e) => updateDx(e.target.value)}
+          />
+          <label className={claseTwo}>
+            Dim en x del paño :
+          </label>
+          <input
+            className={commonInputClasses} placeholder="m"
+            value={dy}
+            onChange={(e) => updateDy(e.target.value)}
+          />
+        </div>
+        <div className={claseDivOne}>
+        <p >Columnas</p>
+        <label className={claseTwo}>
+            Peso especifico - concreto:
+          </label>
+          <input
+            className={commonInputClasses} placeholder="tn/m3"
+            value={pec}
+            onChange={(e) => updatePec(e.target.value)}
+          />
+        <label className={claseTwo}>
+          Numero de columnas :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="und"
+          value={nc}
+          onChange={(e) => updateNc(e.target.value)}
+        />
+        <label className={claseTwo}>
+          Dim x de la columna :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="m"
+          value={dx_col}
+          onChange={(e) => updateDx_col(e.target.value)}
+        />
+        <label className={claseTwo}>
+          Dim y de la columna :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="m"
+          value={dy_col}
+          onChange={(e) => updateDy_col(e.target.value)}
+        />
+        <label className={claseTwo}>
+          Longitud de la columna :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="m"
+          value={l_col}
+          onChange={(e) => updateL_col(e.target.value)}
+        />
+        </div>
+        <div className={claseDivOne}>
+        <p  className="mb-10">Vigas en x</p>
+        <label className={claseTwo}>
+          Numero de vigas en x :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="und"
+          type="text"
+          value={nvx}
+          onChange={(e) => updateNvx(e.target.value)}
+        />
+        <label className={claseTwo}>
+          Dim en x de la vigax :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="m"
+          type="text"
+          value={dx_vgx}
+          onChange={(e) => updateDx_vgx(e.target.value)}
+        />
+        <label className={claseTwo}>
+          Dim en y de la vigax :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="m"
+          type="text"
+          value={dy_vgx}
+          onChange={(e) => updateDy_vgx(e.target.value)}
+        />
+        <label className={claseTwo}>
+          Longitud de la vigax :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="m"
+          type="text"
+          value={l_vgx}
+          onChange={(e) => updateL_vgx(e.target.value)}
+        />
+        </div>
+        <div className={claseDivOne}>
+        <p  className="mb-10">Vigas en y</p>
+        <label className={claseTwo}>
+          Numero de vigas en y :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="und"
+          type="text"
+          value={nvy}
+          onChange={(e) => updateNvy(e.target.value)}
+        />
+        <label className={claseTwo}>
+          Dim en x de la vigay :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="m"
+          type="text"
+          value={dx_vgy}
+          onChange={(e) => updateDx_vgy(e.target.value)}
+        />
+        <label className={claseTwo}>
+          Dim en y de la vigay :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="m"
+          type="text"
+          value={dy_vgy}
+          onChange={(e) => updateDy_vgy(e.target.value)}
+        />
+        <label className={claseTwo}>
+          Longitud de la vigay :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="m"
+          type="text"
+          value={l_vgy}
+          onChange={(e) => updateL_vgy(e.target.value)}
+        />
+        </div>
+        <div className={claseDivOne}>
+        <p  className="mb-10">Carga Viva</p>
+        <label className={claseTwo}>
+          CV techo ultimo piso :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="tn/m2"
+          type="text"
+          value={cv}
+          onChange={(e) => updateCv(e.target.value)}
+        />
+        <label className={claseTwo}>
+          CV techo demas pisos :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="tn/m2"
+          type="text"
+          value={cvr}
+          onChange={(e) => updateCvr(e.target.value)}
+        />
+        <label className={claseTwo}>
+          ancho del plano :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="m"
+          type="text"
+          value={dx_t}
+          onChange={(e) => updateDx_t(e.target.value)}
+        />
+        <label className={claseTwo}>
+          largo del plano :
+        </label>
+        <input
+          className={commonInputClasses} placeholder="m"
+          type="text"
+          value={dy_t}
+          onChange={(e) => updateDy_t(e.target.value)}
+        />
+        </div>
+        <div className={claseDivOne}>
+        <label className={claseTwo}>Altura de entrepiso:</label>
+          <input className={commonInputClasses} type="text" placeholder="m" value={inputValue4} onChange={(e) => updateInputValue4(e.target.value)}/>
+          <label className={claseTwo}>Profundidad de desplante:</label>
+          <input className={commonInputClasses} type="text" placeholder="m" value={inputValue5} onChange={(e) => updateInputValue5(e.target.value)}/> 
+          <label className={claseTwo}>Espesor de la platea(si tuviera):</label>
+          <input className={commonInputClasses} type="text" placeholder="cm" value={inputValue6} onChange={(e) => updateInputValue6(e.target.value)}/>
+
+        </div>
+  
+        
+      </div> 
     </>
   );
 }

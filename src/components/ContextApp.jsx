@@ -19,13 +19,9 @@ function ContextApp() {
 
             
             <div className="flex space-x-12 my-8 w-full items-center justify-center rounded-lg">
-              <ComponentContext1 />
+
             <img className="h-[300px]" src="https://i.imgur.com/UdDH2pa.jpg" alt="referencia" />
             </div>
-
-            <hr className="py-4" />
-            <p className="font  font-bold">Informacion especifica</p>
-            <ComponentContext0 />
           </div>
           <hr className="my-10" />
         </div>

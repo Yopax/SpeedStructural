@@ -5,7 +5,7 @@ import ComponentContext2 from './ComponentContextPredi'
 function PreConsideraciones() {
   return (
     <>
-    <div className='mx-[120px] mt-[80px]  '>
+    <div className='mx-[120px] mt-[120px]  '>
         <p className="text-lg text-emerald-700 font-bold my-4">Predimensionamiento de Elementos Estructurales</p>
           <p className="text-sm my-4 text-justify">La importancia del predimensionamiento, un proceso crucial 
           que determina las dimensiones iniciales de los elementos estructurales. Estas dimensiones 

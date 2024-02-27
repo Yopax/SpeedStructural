@@ -2,8 +2,17 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useGeneralContext } from "@/app/context/GeneralContext";
+import { useRef } from "react";
+import { useReactToPrint } from 'react-to-print';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 function ComponentContext3() {
+
+
+  
+
+
   const { inputValue1, inputValue2,inputValue4,inputValue5,
     inputValue6,inputValue7,inputValue8,inputValue9,inputValue10,
     inputValue11,inputValue12,ocupacionUso,inputValue14, servicio,inputFc, tipoSuelo, capacidadAdmisible,
@@ -118,7 +127,24 @@ function ComponentContext3() {
   const losaAligerada2 = np*coninValue*dx*dy;
   const resultado_redondeadop2 = Math.round(losaAligerada2 * 1000) / 1000;
 
+  const generarPDF =() => {
+    const doc = new jsPDF();
+    
+    doc.text("fds", 95,20);
+    const tableColumnas = ["  ","altura","base"];
+    const data = [`${inputValue7}`];
 
+    doc.autoTable({
+      head: [tableColumnas],
+      body: [
+        ['', 'Product Name', 'Price', 'Model'],
+        [1, 'I-phone', 75000, '2021'],
+        [2, 'Realme', 25000, '2022'],
+        [3, 'Oneplus', 30000, '2021'],
+        ],
+    })
+    doc.save("informe.pdf");
+  }
 
   return (
     <div className="border w-[750px] p-8 rounded-lg mb-6">
@@ -437,6 +463,8 @@ function ComponentContext3() {
                 resultado_redondeado4+resultadocvpinter}.
           </p>
         </div>
+        <button className="mt-8 bg-emerald-700 p-2 rounded-lg 
+        text-white font justify-center items-center flex w-full" onClick={generarPDF}>Descargar Informe</button>
       </div>
     </div>
   );

@@ -19,6 +19,9 @@ function ComponentContext3() {
     np, ca, dx,dy,nc,pec,dx_col,dy_col,l_col,nvx, dx_vgx, dy_vgx,l_vgx,nvy,dx_vgy,dy_vgy,l_vgy,
     cv,dx_t,dy_t,cvr  } = useGeneralContext();
 
+  const { perimetroA, perimetroB } = useGeneralContext();
+
+
     //Losa Aligerada
     const [roundedValue, setRoundedValue] = useState(0);
 
@@ -127,24 +130,163 @@ function ComponentContext3() {
   const losaAligerada2 = np*coninValue*dx*dy;
   const resultado_redondeadop2 = Math.round(losaAligerada2 * 1000) / 1000;
 
-  const generarPDF =() => {
-    const doc = new jsPDF();
-    
-    doc.text("fds", 95,20);
-    const tableColumnas = ["  ","altura","base"];
-    const data = [`${inputValue7}`];
+// este calculo solo es para el informe final
+// 	Losa Prefabricada Pretensada
+const [roundedValue2, setRoundedValue2] = useState(0);
 
+useEffect(() => {
+  const losa = inputValue7 / 28;
+  const calculateRoundedValue2 = () => {
+    if (losa === 0) {
+      setRoundedValue2(losa);
+    } else {
+      const distances = [Math.abs(losa - 30), Math.abs(losa - 25), Math.abs(losa - 20), Math.abs(losa - 17)];
+      const minDistance = Math.min(...distances);
+      if (minDistance === Math.abs(losa - 30)) {
+        setRoundedValue2(30);
+      } else if (minDistance === Math.abs(losa - 25)) {
+        setRoundedValue2(25);
+      } else if (minDistance === Math.abs(losa - 20)) {
+        setRoundedValue2(20);
+      } else {
+        setRoundedValue2(17);
+      }
+    }
+  };
+  calculateRoundedValue2();
+}, [inputValue7]);
+
+// 	Losa Maciza
+const [roundedValue3, setRoundedValue3] = useState(0);
+
+useEffect(() => {
+  const losa = inputValue7 / 30;
+  const calculateRoundedValue3 = () => {
+    if (losa === 0) {
+      setRoundedValue3(losa);
+    } else {
+      const distances = [Math.abs(losa - 30), Math.abs(losa - 25), Math.abs(losa - 20), Math.abs(losa - 17)];
+      const minDistance = Math.min(...distances);
+      if (minDistance === Math.abs(losa - 30)) {
+        setRoundedValue3(30);
+      } else if (minDistance === Math.abs(losa - 25)) {
+        setRoundedValue3(25);
+      } else if (minDistance === Math.abs(losa - 20)) {
+        setRoundedValue3(20);
+      } else {
+        setRoundedValue3(17);
+      }
+    }
+  };
+  calculateRoundedValue3();
+}, [inputValue7]);
+
+// Losa Maciza Bidireccional
+
+const perimetro = (perimetroA * 2 + perimetroB * 2) / 140;
+const perimetroRedondeado = perimetro.toFixed(2);
+const perimetroNumerico = parseFloat(perimetroRedondeado);
+
+
+  const generarPDF = () => {
+    const doc = new jsPDF();
+    const tableLosas = ["", "Losa Aligerada", "Losa Prefabricada Pretensada", "Losa maciza", "Losa maciza Bidirecional" ];
+    const tableRows = [ ["Altura(h)", `${roundedValue}cm`, `${roundedValue2}cm`, `${roundedValue3}cm`,`${perimetroNumerico}cm`],];
+
+    const tableVigas = ["", "viga eje x-x", "viga eje y-y"];
+    const tableRows2 = [ ["Altura(h)", `${vigax}cm`, `${vigay}cm`]
+    , ["Base", `${vigax/2}cm`, `${vigay/2}cm`]
+  ];
+
+    const tableColumnas = ["", "Columna centrada", "Columna esquinada", "Columna excentrica"];
+    const tableRows3 = [ ["Altura(h)", `${acolumnofinal}cm`, `${acolumnofinal2}cm`, `${acolumnofinal3}cm`]
+    , ["Base", `${acolumnofinal}cm`, `${acolumnofinal2}cm`, `${acolumnofinal3}cm`]
+  ];
+
+  const tableZapatas = ["", "Zapata centrada", "Zapata esquinada", "Zapata excentrica"];
+    const tableRows4 = [ ["Altura(h)", `50cm`, `50cm`, `50cm`]
+    , ["Size x", `${azapatacentrada}cm`, `${azapataesquinada}cm`, `${azapataexcentrica}cm`],
+    ["Size y", `${azapatacentrada}cm`, `${azapataesquinada}cm`, `${azapataexcentrica}cm`],
+    
+  ];
+  
+    // Título
+    doc.setFontSize(18);
+    doc.text("Informe Final", 90, 10);
+
+    doc.setFontSize(11);
+      doc.text(`Este informe presenta una edificación aporticada de concreto armado de ${inputValue2} pisos  destinada`, 17, 20);
+      doc.text(`para ${ocupacionUso} cuyas características son:`, 17, 25);
+      doc.text(`
+      Peso específico del concreto: ${pec} T/m^3  
+      Altura de entrepiso (de piso a piso): ${inputValue4}m
+      Profundidad de desplante (contacto con platea): ${inputValue5}cm 
+      Espesor de la platea: ${inputValue6}cm`, 10, 30);
+
+    
+  
+    // Subtítulo
+    doc.setFontSize(12);
+    doc.text("01.Predimensionamiento y Metrado de cargas", 15, 58);
+
+    // Subtítulo
+    doc.setFontSize(10);
+    doc.text("Predimensionamiento - Losas", 15, 65);
+    // Tabla ordenada
+    tableRows.sort((a, b) => a[0] - b[0]);
     doc.autoTable({
+      startY: 67,
+      head: [tableLosas],
+      body: tableRows,
+    });
+    // Descripción de la tabla
+    doc.setFontSize(8);
+    doc.text(`Recomendacion : en la losa aligerada para los primeros pisos asumimos ${roundedValue} cm y para el ultimo piso consideramos ${roundedValue - 5}cm.`, 14, doc.autoTable.previous.finalY + 3);
+
+    // Subtítulo
+    doc.setFontSize(10);
+    doc.text("Predimensionamiento - Vigas", 15, 95);
+    // Tabla ordenada
+    tableRows.sort((a, b) => a[0] - b[0]);
+    doc.autoTable({
+      startY: 97,
+      head: [tableVigas],
+      body: tableRows2,
+    });
+    // Descripción de la tabla
+    doc.setFontSize(8);
+    doc.text(`Recomendacion : en la losa aligerada para los primeros pisos asumimos ${roundedValue} cm y para el ultimo piso consideramos ${roundedValue - 5}cm.`, 14, doc.autoTable.previous.finalY + 3);
+
+
+    doc.setFontSize(10);
+    doc.text("Predimensionamiento - Columnas", 15, 133);
+    // Tabla ordenada
+    tableRows.sort((a, b) => a[0] - b[0]);
+    doc.autoTable({
+      startY: 135,
       head: [tableColumnas],
-      body: [
-        ['', 'Product Name', 'Price', 'Model'],
-        [1, 'I-phone', 75000, '2021'],
-        [2, 'Realme', 25000, '2022'],
-        [3, 'Oneplus', 30000, '2021'],
-        ],
-    })
+      body: tableRows3,
+    });
+    // Descripción de la tabla
+    doc.setFontSize(8);
+    doc.text(`Recomendacion : en la losa aligerada para los primeros pisos asumimos ${roundedValue} cm y para el ultimo piso consideramos ${roundedValue - 5}cm.`, 14, doc.autoTable.previous.finalY + 3);
+
+
+    doc.setFontSize(10);
+    doc.text("Predimensionamiento - Zapatas", 15, 188);
+    // Tabla ordenada
+    tableRows.sort((a, b) => a[0] - b[0]);
+    doc.autoTable({
+      startY: 190,
+      head: [tableZapatas],
+      body: tableRows4,
+    });
+    // Descripción de la tabla
+    doc.setFontSize(8);
+    doc.text(`Recomendacion : la altura de la zapataq (50cm) es una altura tentativa, porfavor verificar por punzonamiento.`, 14, doc.autoTable.previous.finalY + 3);
+
     doc.save("informe.pdf");
-  }
+  };
 
   return (
     <div className="border w-[750px] p-8 rounded-lg mb-6">

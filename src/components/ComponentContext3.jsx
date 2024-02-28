@@ -212,11 +212,14 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
   
     // Título
     doc.setFontSize(18);
-    doc.text("Informe Final", 90, 10);
+    doc.text("Informe Final", 85, 10);
 
-    doc.setFontSize(11);
-      doc.text(`Este informe presenta una edificación aporticada de concreto armado de ${inputValue2} pisos  destinada`, 17, 20);
-      doc.text(`para ${ocupacionUso} cuyas características son:`, 17, 25);
+    doc.setFontSize(12);
+    doc.text(`${inputValue1}`, 92, 16);
+
+    doc.setFontSize(10);
+      doc.text(`Este informe presenta una edificación aporticada de concreto armado de ${inputValue2} pisos  destinada`, 17, 24);
+      doc.text(`para ${ocupacionUso} cuyas características son:`, 17, 28);
       doc.text(`
       Peso específico del concreto: ${pec} T/m^3  
       Altura de entrepiso (de piso a piso): ${inputValue4}m
@@ -227,15 +230,15 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
   
     // Subtítulo
     doc.setFontSize(12);
-    doc.text("01.Predimensionamiento y Metrado de cargas", 15, 58);
+    doc.text("01. Predimensionamiento y Metrado de cargas", 15, 62);
 
     // Subtítulo
     doc.setFontSize(10);
-    doc.text("Predimensionamiento - Losas", 15, 65);
+    doc.text("Predimensionamiento - Losas", 15, 72);
     // Tabla ordenada
     tableRows.sort((a, b) => a[0] - b[0]);
     doc.autoTable({
-      startY: 67,
+      startY: 75,
       head: [tableLosas],
       body: tableRows,
     });
@@ -245,11 +248,11 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
 
     // Subtítulo
     doc.setFontSize(10);
-    doc.text("Predimensionamiento - Vigas", 15, 95);
+    doc.text("Predimensionamiento - Vigas", 15, 108);
     // Tabla ordenada
     tableRows.sort((a, b) => a[0] - b[0]);
     doc.autoTable({
-      startY: 97,
+      startY: 110,
       head: [tableVigas],
       body: tableRows2,
     });
@@ -259,11 +262,11 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
 
 
     doc.setFontSize(10);
-    doc.text("Predimensionamiento - Columnas", 15, 133);
+    doc.text("Predimensionamiento - Columnas", 15, 148);
     // Tabla ordenada
     tableRows.sort((a, b) => a[0] - b[0]);
     doc.autoTable({
-      startY: 135,
+      startY: 150,
       head: [tableColumnas],
       body: tableRows3,
     });
@@ -284,6 +287,124 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
     // Descripción de la tabla
     doc.setFontSize(8);
     doc.text(`Recomendacion : la altura de la zapataq (50cm) es una altura tentativa, porfavor verificar por punzonamiento.`, 14, doc.autoTable.previous.finalY + 3);
+
+
+    doc.addPage();
+
+
+    // Subtítulo
+    doc.setFontSize(12);
+    doc.text("02. Metrado de cargas", 15, 20);
+    doc.setFontSize(10);
+    doc.text("Efectuamos el metrado de cargas, calculando los pesos por pisos y para ello utilizamos la Norma de Cargas E020", 15, 30);
+
+    doc.setFontSize(10);
+    doc.text(`Ultimo Piso (piso${inputValue2}:)`, 15, 40);
+    doc.text("Carga Muerta", 15, 50);
+
+    // Tabla ordenada
+    const tableCargaMuerta = ["", "Losa Aligerada", "Columnas", "Viga x-x", "Viga y-y"];
+    const tableRows5 = [ ["CM", `${resultado_redondeado}`, `${resultado_redondeado2}`, `${resultado_redondeado3}`, `${resultado_redondeado4}`],];
+    doc.autoTable({
+      startY: 55,
+      head: [tableCargaMuerta],
+      body: tableRows5,
+    });
+    // Descripción de la tabla
+    doc.setFontSize(8);
+    doc.text(`Total : ${resultado_redondeado + resultado_redondeado2 + resultado_redondeado3 + resultado_redondeado4}`, 14, doc.autoTable.previous.finalY + 3);
+
+    doc.setFontSize(10);
+    doc.text("Carga Viva", 15, doc.autoTable.previous.finalY + 10);
+    // Tabla ordenada
+    const tableCargaViva = ["", "Techo"];
+    const tableRows6 = [ ["CV", `${resultado_redondeado5}`],];
+    doc.autoTable({
+      startY: doc.autoTable.previous.finalY + 15,
+      head: [tableCargaViva],
+      body: tableRows6,
+    });
+    // Descripción de la tabla
+    doc.setFontSize(8);
+    doc.text(`CV+CM : ${resultado_redondeado + resultado_redondeado2 + resultado_redondeado3 + resultado_redondeado4+resultado_redondeado5}`, 14, doc.autoTable.previous.finalY + 3);
+
+    doc.setLineWidth(0.5); // Establecer el ancho de la línea
+    doc.line(14, doc.autoTable.previous.finalY + 8, 200, doc.autoTable.previous.finalY + 8);
+
+    doc.setFontSize(10);
+    doc.text(`Pisos intermedios (son todos  los pisos sin tener en cuenta el ultimo ni el primero:)`, 15, 121);
+    doc.text("Carga Muerta", 15, 126);
+
+    // Tabla ordenada
+    const tableCargaMuerta2 = ["", "Losa Aligerada", "Columnas", "Viga x-x", "Viga y-y"];
+    const tableRows7 = [ ["CM", `${resultado_redondeadop2}`, `${resultado_redondeado2}`, `${resultado_redondeado3}`, `${resultado_redondeado4}`],];
+    doc.autoTable({
+      startY: 130,
+      head: [tableCargaMuerta2],
+      body: tableRows7,
+    });
+    // Descripción de la tabla
+    doc.setFontSize(8);
+    doc.text(`Total : ${resultado_redondeadop2 + resultado_redondeado2 + resultado_redondeado3 + resultado_redondeado4}`, 14, doc.autoTable.previous.finalY + 3);
+
+    doc.setFontSize(10);
+    doc.text("Carga Viva", 15, doc.autoTable.previous.finalY + 10);
+    // Tabla ordenada
+    const tableCargaViva2 = ["", "Techo"];
+    const tableRows8 = [ ["CV", `${resultadocvpinter}`],];
+    doc.autoTable({
+      startY: doc.autoTable.previous.finalY + 15,
+      head: [tableCargaViva2],
+      body: tableRows8,
+    });
+    // Descripción de la tabla
+    doc.setFontSize(8);
+    doc.text(`CV+CM: ${resultado_redondeadop2 + resultado_redondeado2 + resultado_redondeado3 + resultado_redondeado4+resultadocvpinter}`, 14, doc.autoTable.previous.finalY + 3);
+
+    doc.setLineWidth(0.5); // Establecer el ancho de la línea
+    doc.line(14, doc.autoTable.previous.finalY + 8, 200, doc.autoTable.previous.finalY + 8);
+
+    doc.setFontSize(10);
+    doc.text(`Pisos Primer piso`, 15, 193);
+    doc.text("Carga Muerta", 15, 198);
+
+    // Tabla ordenada
+    const tableCargaMuerta3 = ["", "Losa Aligerada", "Columnas", "Viga x-x", "Viga y-y"];
+    const tableRows9 = [ ["CM", `${resultado_redondeadop2}`, `${columnas2}`, `${resultado_redondeado3}`, `${resultado_redondeado4}`],];
+    doc.autoTable({
+      startY: 200,
+      head: [tableCargaMuerta3],
+      body: tableRows9,
+    });
+    // Descripción de la tabla
+    doc.setFontSize(8);
+    doc.text(`Total : ${resultado_redondeadop2 + columnas2 + resultado_redondeado3 + resultado_redondeado4}`, 14, doc.autoTable.previous.finalY + 3);
+
+    doc.setFontSize(10);
+    doc.text("Carga Viva", 15, doc.autoTable.previous.finalY + 12);
+    // Tabla ordenada
+    const tableCargaViva3 = ["", "Techo"];
+    const tableRows10 = [ ["CV", `${resultadocvpinter}`],];
+    doc.autoTable({
+      startY: doc.autoTable.previous.finalY + 15,
+      head: [tableCargaViva3],
+      body: tableRows10,
+    });
+    // Descripción de la tabla
+    doc.setFontSize(8);
+    doc.text(`CV+CM: ${resultado_redondeadop2 + columnas2 + resultado_redondeado3 + resultado_redondeado4+resultadocvpinter}`, 14, doc.autoTable.previous.finalY + 3);
+
+    doc.setLineWidth(0.5); // Establecer el ancho de la línea
+    doc.line(14, doc.autoTable.previous.finalY + 8, 200, doc.autoTable.previous.finalY + 8);
+    //tabla de las cargas totales de cada piso
+    const tableCargasTotales = ["", "Ultimo Piso", "Pisos intermedios", "Primer piso"];
+    const tableRows11 = [ ["Cargas Totales", `${resultado_redondeado + resultado_redondeado2 + resultado_redondeado3 + resultado_redondeado4+resultado_redondeado5}`, `${resultado_redondeadop2 + resultado_redondeado2 + resultado_redondeado3 + resultado_redondeado4+resultadocvpinter}`, `${resultado_redondeadop2 + columnas2 + resultado_redondeado3 + resultado_redondeado4+resultadocvpinter}`],];
+    doc.autoTable({
+      startY: doc.autoTable.previous.finalY + 15,
+      head: [tableCargasTotales],
+      body: tableRows11,
+    });
+
 
     doc.save("informe.pdf");
   };

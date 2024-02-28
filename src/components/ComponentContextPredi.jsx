@@ -55,6 +55,8 @@ function ComponentContext2() {
   const {inputValue4, updateInputValue4} = useGeneralContext();
   const {inputValue5, updateInputValue5} = useGeneralContext();
   const {inputValue6, updateInputValue6} = useGeneralContext();
+  const {inputValue1, updateInputValue1} = useGeneralContext();
+  const {ocupacionUso, updateOcupacionUso} = useGeneralContext();
 
 
 
@@ -642,7 +644,12 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
         />
         </div>
         <div className={claseDivOne}>
-        <label className={claseTwo}>Altura de entrepiso:</label>
+        <p  className="mb-2">Datos extras</p>
+        <label className={claseTwo}>Autor:</label>
+          <input className={commonInputClasses} type="text" placeholder="Baarreto Darli" value={inputValue1} onChange={(e) => updateInputValue1(e.target.value)}/>
+          <label className={claseTwo}>Ocupacion/Uso</label>
+          <input className={commonInputClasses} type="text" placeholder="Escuelas, etc" value={ocupacionUso} onChange={(e) => updateOcupacionUso(e.target.value)}/>
+          <label className={claseTwo}>Altura de entrepiso:</label>
           <input className={commonInputClasses} type="text" placeholder="m" value={inputValue4} onChange={(e) => updateInputValue4(e.target.value)}/>
           <label className={claseTwo}>Profundidad de desplante:</label>
           <input className={commonInputClasses} type="text" placeholder="m" value={inputValue5} onChange={(e) => updateInputValue5(e.target.value)}/> 

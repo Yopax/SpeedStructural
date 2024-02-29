@@ -21,7 +21,7 @@ function Descripcion() {
           >
             01.Selecciona
           </button>
-          <p className='text-sm font-normal my-6 text-white'>Seleciona el tipo de calculo que se desea realiza</p>
+          <p className='text-sm font-normal my-6 text-white'>Selecciona el tipo de calculo que se desea realiza</p>
           </div>
           <div className="flex flex-col text-9xl text-center items-center justify-center">
             <GrSelect />
@@ -35,7 +35,7 @@ function Descripcion() {
           >
             02.Configura
           </button>
-          <p className='text-sm font-normal my-6 text-white'>Configura tu proyecto segun tus necesidades</p>
+          <p className='text-sm font-normal my-6 text-white'>Configura tu proyecto según tus necesidades</p>
           </div>
           <div className="flex flex-col text-9xl text-center items-center justify-center">
           <GrConfigure />
@@ -63,9 +63,9 @@ function Descripcion() {
             type="button"
             className=" bg-white text-emerald-600 text-sm leading-6 font-bold py-1 px-3 rounded-lg"
           >
-            04.Obten tu informe
+            04.Obtén tu informe
           </button>
-          <p className='text-sm font-normal my-6 text-white'>Vizualiza el calculo completo en un infome</p>
+          <p className='text-sm font-normal my-6 text-white'>Visualiza el calculo completo en un informe</p>
           </div>
           <div className="flex flex-col text-9xl text-center items-center justify-center">
           <GrDocumentText />

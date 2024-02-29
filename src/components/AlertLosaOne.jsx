@@ -4,7 +4,7 @@ function AlertLosaOne() {
   return (
     <>
     <button className='text-xs text-red-700 font-semibold' onClick={() => document.getElementById("my_modal_4").showModal()}>
-    Nota: Formulas empleadas para estos calculos.
+    Nota: Formulas empleadas para estos cálculos.
 
     </button>
     <dialog id="my_modal_4" className="modal">

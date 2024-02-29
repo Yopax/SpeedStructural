@@ -15,17 +15,17 @@ function ComponentContext1() {
 
   return (
     <div className={claseDiv}>
-      <p className="font2 text-[16px] text-center  font-bold mb-4">Informacion General del Proyecto</p>
+      <p className="font2 text-[16px] text-center  font-bold mb-4">Información General del Proyecto</p>
       <div className={claseDivTwo}>
         <label className={claseTwo}>Nombre del autor:</label>
         <input className={claseOne} type="text" placeholder="Darli Barreto" value={inputValue1} onChange={(e) => updateInputValue1(e.target.value)}/>
       </div>
       <div className={claseDivTwo}>
-        <label className={claseTwo}>Ocupacion/uso:</label>
+        <label className={claseTwo}>Ocupación/uso:</label>
         <input className={claseOne} type="text" placeholder="Escuela, hospital,etc" value={ocupacionUso} onChange={(e) => updateOcupacionUso(e.target.value)}/>
       </div>
       <div className={claseDivTwo}>
-        <label className={claseTwo}>Carga de la edificacion(P):</label>
+        <label className={claseTwo}>Carga de la edificación(P):</label>
         <input className={claseOne} type="text"  placeholder="kg/m2" value={servicio} onChange={(e) => updateServicio(e.target.value)}/>
       </div>
       <div className={claseDivTwo}>
@@ -41,7 +41,7 @@ function ComponentContext1() {
        
       </div>
       <div className={claseDivTwo}>
-        <label className={claseTwo}>Fuerza de compresion(fc):</label>
+        <label className={claseTwo}>Fuerza de compresión(fc):</label>
         <input className={claseOne} type="text" placeholder="kg/cm2"  value={inputFc} onChange={(e) => updateInputFc(e.target.value)}/>
       </div>
 

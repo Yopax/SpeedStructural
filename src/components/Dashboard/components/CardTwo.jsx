@@ -7,8 +7,8 @@ function CardTwo() {
       <div className=" flex w-full h-[00px]">
         <div className="flex-col">
           <p className="text-sm text-sky-700 font-medium my-4">Selecciona el tipo de Sistema estructural</p>
-          <p className="text-sm my-7">Citando la norma Peruana E.030 de Diseño simoresistente en su 
-          Artículo 17.- Categoría y Sistemas Estructurales: se debera escoger un diseño estructural
+          <p className="text-sm my-7">Citando la norma Peruana E.030 de Diseño sismoresistente en su 
+          Artículo 17.- Categoría y Sistemas Estructurales: se deberá escoger un diseño estructural
           De acuerdo a la categoría de una edificación y la zona donde se ubique, ésta se proyecta empleando
           el sistema estructural que se indica en la Tabla N° 6 y respetando las restricciones a la irregularidad de la
           Tabla N° 10.

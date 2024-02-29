@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import AlertLosaOne from "./AlertLosaOne";
 
 const commonInputClasses = "text-gray-700 border border-solid rounded-md text-center border-gray-300 w-[120px] text-xs py-1";
-const claseOne = "font justify-between  text-xs mx-2";
+const claseOne = "font-medium text-gray-900 font justify-between  text-xs mx-2";
 const subTitle = "text-xs text-white font-bold my-2";
 const claseTwo = "text-xs text-white font-medium mx-2 ";
 const claseDivOne = " flex flex-col self-center text-white items-center justify-center text-center m-2 rounded-md h-72 w-44 bg-emerald-700"
@@ -189,7 +189,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
       <div>
         <hr />
         <div className="flex">
-          <div className="my-2  mr-[110px] bg-emerald-700 w-[320px] p-4 rounded-md">
+          <div className="my-2  mr-[68px] bg-emerald-700 w-[336px] p-4 rounded-md">
             <p className={subTitle}>Losas - Ingresa los datos solicitados:</p>
             <div className="flex my-4 justify-between">
               <label className={claseOne}>Ln - Losa aligerada:</label>
@@ -228,7 +228,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
                   <th>Losa Aligerada</th>
                   <th>Losa Prefabricada Pretensada</th>
                   <th>Losa maciza</th>
-                  <th>Losa maciza Bidirecional</th>
+                  <th>Losa maciza Bidireccional</th>
                 </tr>
               </thead>
               <tbody>
@@ -242,7 +242,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               </tbody>
             </table>
             <p className="font2 text-xs">
-            Recomendacion : en la losa aligerada para los primeros pisos
+            Recomendación : en la losa aligerada para los primeros pisos
             asumimos {roundedValue} cm y para el ultimo piso consideramos{" "}
             {roundedValue - 5}cm.
           </p>
@@ -274,7 +274,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               onChange={(e) => updateInputValue9(e.target.value)}
             />
           </div>
-          <p className={subTitle}>Colmunas- Ingresa los datos solicitados:</p>
+          <p className={subTitle}>Columnas- Ingresa los datos solicitados:</p>
           <div className="flex w-[290px] justify-between my-4">
             <label className={claseOne}>Numero de pisos:</label>
             <input
@@ -285,7 +285,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
             />
           </div>
           <div className="flex w-[290px] justify-between my-4">
-            <label className={claseOne}>Carga de la Edificacion(P):</label>
+            <label className={claseOne}>Carga de la Edificación(P):</label>
             <input
               className={commonInputClasses}
               placeholder="kgf/m2"
@@ -294,7 +294,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
             />
           </div>
           <div className="flex w-[290px] justify-between my-4">
-            <label className={claseOne}>Fuerza de Compresion(fc):</label>
+            <label className={claseOne}>Fuerza de Compresión(fc):</label>
             <input
               className={commonInputClasses}
               placeholder="kgf/cm2"
@@ -322,7 +322,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
             />
           </div>
           <div className="flex w-[290px] justify-between my-4">
-            <label className={claseOne}>AT - Columna exentrica:</label>
+            <label className={claseOne}>AT - Columna excéntrica:</label>
             <input
               className={commonInputClasses}
               placeholder="m2"
@@ -341,7 +341,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
                   <th>Vigas eje y - y</th>
                   <th>Columna Centrada</th>
                   <th>Columna Esquinada</th>
-                  <th>Columna Excentrica</th>
+                  <th>Columna Excéntrica</th>
                   
                 </tr>
               </thead>
@@ -400,7 +400,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
                 <th></th>
                 <th>Zapata centrada</th>
                 <th>Zapata esquinada</th>
-                <th>Zapata excentrica</th>
+                <th>Zapata excéntrica</th>
               </tr>
             </thead>
             <tbody>
@@ -426,8 +426,8 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
             <tfoot></tfoot>
           </table>
           <p className="font2 text-xs">
-            Recomendacion : la altura de la zapataq (50cm) es una altura
-            tentativa, porfavor verificar por punzonamiento.
+            Recomendación : la altura de la zapata sera de (50cm) es una altura
+            tentativa, por favor verificar por punzonamiento.
           </p>
             <AlertLosaOne />
           </div>
@@ -435,7 +435,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
         </div>
         <hr className="my-2" />  
 
-        <p className="text-lg text-emerald-700 font-bold my-4">Metrado de Cargas</p>
+        <p className="text-lg text-emerald-700 font-bold my-4">02. Metrado de Cargas</p>
           <p className="text-sm my-4 text-justify">La importancia del predimensionamiento, un proceso crucial 
           que determina las dimensiones iniciales de los elementos estructurales. Estas dimensiones 
           preliminares son fundamentales para permitir un Analisis Estructural que cumpla lo establecido por las
@@ -616,7 +616,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
           onChange={(e) => updateCv(e.target.value)}
         />
         <label className={claseTwo}>
-          CV techo demas pisos :
+          CV techo demás pisos :
         </label>
         <input
           className={commonInputClasses} placeholder="tn/m2"
@@ -646,8 +646,8 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
         <div className={claseDivOne}>
         <p  className="mb-2">Datos extras</p>
         <label className={claseTwo}>Autor:</label>
-          <input className={commonInputClasses} type="text" placeholder="Baarreto Darli" value={inputValue1} onChange={(e) => updateInputValue1(e.target.value)}/>
-          <label className={claseTwo}>Ocupacion/Uso</label>
+          <input className={commonInputClasses} type="text" placeholder="Barreto Darli" value={inputValue1} onChange={(e) => updateInputValue1(e.target.value)}/>
+          <label className={claseTwo}>Ocupación/Uso</label>
           <input className={commonInputClasses} type="text" placeholder="Escuelas, etc" value={ocupacionUso} onChange={(e) => updateOcupacionUso(e.target.value)}/>
           <label className={claseTwo}>Altura de entrepiso:</label>
           <input className={commonInputClasses} type="text" placeholder="m" value={inputValue4} onChange={(e) => updateInputValue4(e.target.value)}/>

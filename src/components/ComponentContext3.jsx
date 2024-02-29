@@ -215,7 +215,7 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
     doc.text("Informe Final", 85, 10);
 
     doc.setFontSize(12);
-    doc.text(`${inputValue1}`, 92, 16);
+    doc.text(`${inputValue1}`, 75, 16);
 
     doc.setFontSize(10);
       doc.text(`Este informe presenta una edificación aporticada de concreto armado de ${inputValue2} pisos  destinada`, 17, 24);
@@ -467,7 +467,7 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
             <tfoot></tfoot>
           </table>
           <p className="font2 text-xs">
-            Recomendacion : en la losa aligerada para los primeros pisos
+            Recomendación : en la losa aligerada para los primeros pisos
             asumimos {roundedValue} cm y para el ultimo piso consideramos{" "}
             {roundedValue - 5}cm.
           </p>
@@ -480,7 +480,7 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
                 <th></th>
                 <th>Columna centrada</th>
                 <th>Columna esquinada</th>
-                <th>Columna excentrica</th>
+                <th>Columna excéntrica</th>
               </tr>
             </thead>
             <tbody>
@@ -500,7 +500,7 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
             <tfoot></tfoot>
           </table>
           <p className="font2 text-xs">
-            Recomendacion : en la losa aligerada para los primeros pisos
+            Recomendación : en la losa aligerada para los primeros pisos
             asumimos {roundedValue} cm y para el ultimo piso consideramos{" "}
             {roundedValue - 5}cm.
           </p>
@@ -513,7 +513,7 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
                 <th></th>
                 <th>Zapata centrada</th>
                 <th>Zapata esquinada</th>
-                <th>Zapata excentrica</th>
+                <th>Zapata excéntrica</th>
               </tr>
             </thead>
             <tbody>

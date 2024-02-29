@@ -187,7 +187,7 @@ updateDy_t,cvr,updateCvr} = useGeneralContext();
           onChange={(e) => updateCv(e.target.value)}
         />
         <label className={claseTwo}>
-          CV techo demas pisos :
+          CV techo demás pisos :
         </label>
         <input
           className={claseOne} placeholder="tn/m2"

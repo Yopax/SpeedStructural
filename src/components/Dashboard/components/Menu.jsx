@@ -26,7 +26,7 @@ function Menu() {
                 </h3>
               </div>
             </div>
-            <p className="flex-col text-center  text-xs mx-3 mt-6 font">Normas en que se basan los calculos de la aplicacion:</p>
+            <p className="flex-col text-center  text-xs mx-3 mt-6 font">Normas en que se basan los cálculos de la aplicación:</p>
             <div className="flex flex-col mt-[40px] text-center justify-center items-center">
               <Norma title="Norma E-0.20"/>
               <Norma title="Norma E-0.30"/>

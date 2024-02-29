@@ -9,7 +9,7 @@ function PresentacionHome() {
       <div className="flex flex-col w-full justify-center text-center items-center mb-24">
         <h4 className="font text-emerald-600  text-lg font-medium mt-40">Libera tu mente, alcanza tu potencial</h4>
         <h1 className=" text-emerald-600 text-6xl font-extrabold text-center mt-4 mb-6 w-[55%]">
-          Ahorra tiempo con el calculo automatico.
+          Ahorra tiempo con el calculo automático.
         </h1>
         <p className=" text-lg leading-6 mb-4 mt-2">
         ¿Cansado de realizar cálculos tediosos y repetitivos?<br /> 

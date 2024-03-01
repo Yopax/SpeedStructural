@@ -1,12 +1,10 @@
 "use client"
 import { ContextOneProvider } from "@/app/context/GeneralContext";
 import React from "react";
-import ComponentContext1 from "./ComponentContext1";
-import ComponentContext2 from "./ComponentContextPredi";
 import ComponentContext3 from "./ComponentContext3";
-import ComponentContext0 from "./ComponentContext0";
 import NavBarCalculo from "./NavBarCalculo";
 import PreConsideraciones from "./PreConsideraciones";
+
 
 function ContextApp() {
   return (

@@ -605,7 +605,7 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
             </tbody>
           </table>
           <p className="font2 text-xs">
-            Recomendacion : {resultado_redondeado +
+            Total General : {resultado_redondeado +
                 resultado_redondeado2 +
                 resultado_redondeado3 +
                 resultado_redondeado4+resultado_redondeado5}.
@@ -663,7 +663,7 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
             </tbody>
           </table>
           <p className="font2 text-xs">
-            Total: {resultado_redondeadop2 +
+            Total General: {resultado_redondeadop2 +
                 resultado_redondeado2 +
                 resultado_redondeado3 +
                 resultado_redondeado4+resultadocvpinter}.
@@ -720,13 +720,13 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
             </tbody>
           </table>
           <p className="font2 text-xs">
-            Total: {resultado_redondeadop2 +
+            Total General: {resultado_redondeadop2 +
                 columnas2 +
                 resultado_redondeado3 +
                 resultado_redondeado4+resultadocvpinter}.
           </p>
         </div>
-        <button className="mt-8 bg-emerald-700 p-2 rounded-lg 
+        <button className="mt-8 bg-emerald-700 hover:bg-blue-600 p-2 rounded-lg 
         text-white font justify-center items-center flex w-full" onClick={generarPDF}>Descargar Informe</button>
       </div>
     </div>

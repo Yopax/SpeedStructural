@@ -436,13 +436,9 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
         <hr className="my-2" />  
 
         <p className="text-lg text-emerald-700 font-bold my-4">02. Metrado de Cargas</p>
-          <p className="text-sm my-4 text-justify">La importancia del predimensionamiento, un proceso crucial 
-          que determina las dimensiones iniciales de los elementos estructurales. Estas dimensiones 
-          preliminares son fundamentales para permitir un Analisis Estructural que cumpla lo establecido por las
-          las normas Peruanas (José Alberto, 2022). Como dijo el ingeniero alberto el predimensionamiento es darle
-          dimensiones tentativas a los elementos estructurales, si realizamos un buen predimensionamiento podemos lograr 
-          que las dimensiones tentativas sean las finales, y así ahorrar tiempo, esto dependera mucho de la 
-          experiencia del Ingeniero. 
+          <p className="text-sm my-4 text-justify">El metrado de cargas es una técnica con la cual se estiman las cargas actuantes sobre
+los distintos elementos estructurales que componen al edificio. Este proceso es aproximado ya que por lo general se desprecian los efectos hiperestáticos producidos por los
+momentos flectores, salvo que estos sean muy importantes.  
         </p>
 
         <div className="w-screen justify-center text-center items-center p-2 grid grid-cols-7 max-[1024px]:grid-cols-3 max-[768px]:grid-cols-2 max-[425px]:grid-cols-1 mt-8 mb-8 ">

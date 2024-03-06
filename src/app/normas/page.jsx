@@ -1,8 +1,11 @@
 "use client";
-import LandingPage from "@/components/01_Landing_Page/LandingPage";
+import React from 'react';
 import { motion } from "framer-motion";
+import NavBar from '@/components/01_Landing_Page/components/NavBar';
+import Normas from '@/components/03_Normas/Normas';
 
-export default function Home() {
+
+function page() {
   return (
     <>
       <motion.div
@@ -10,8 +13,11 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <LandingPage />
+      <NavBar />
+      <Normas />
       </motion.div>
     </>
-  );
+  )
 }
+
+export default page

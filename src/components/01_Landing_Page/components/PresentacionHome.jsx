@@ -1,23 +1,28 @@
 import React from 'react'
 import BotonDashboard from './BotonDashboard';
-import { TbSpeedboat } from "react-icons/tb";
 
 
 function PresentacionHome() {
   return (
     <>
       <div className="flex flex-col w-full justify-center text-center items-center mb-24">
-        <h4 className="font text-emerald-600  text-lg font-medium mt-40">Libera tu mente, alcanza tu potencial</h4>
-        <h1 className=" text-emerald-600 text-6xl font-extrabold text-center mt-4 mb-6 w-[55%]">
-          Ahorra tiempo con el calculo automático.
+        
+        <h4 className="font text-emerald-600  text-lg font-medium mt-[140px] ">
+         Web App creada para optimizar tu tiempo de cálculo del
+        </h4>
+        <h1 className=" text-emerald-600 text-6xl font-extrabold text-center my-6 w-[55%]">
+          Predimensionamiento y metrado de cargas.<br />
         </h1>
-        <p className=" text-lg leading-6 mb-4 mt-2">
-        ¿Cansado de realizar cálculos tediosos y repetitivos?<br /> 
-        Nuestra innovadora herramienta te ofrece la solución perfecta. <br />
-        Con solo unos clics, podrás obtener resultados precisos 
-        y rápidos.
+        
+        <p className=" text-[18px] leading-6 mb-2 mt-2">
+        Speed Structural,tiene como finalidad optimizar el tiempo de calculo del <br /> 
+        predimensionamiento y metrado de cargas para un análisis y diseño sísmico.<br /> 
         </p>
-        <div className='flex space-x-4 my-4'>
+        <p className=' mb-6 text-[10px] font-semibold'>
+          Proyecto de titulación para optar el grado Ingeniero Civil - Barreto Rodriguez Darli
+        </p>
+        
+        <div className='flex space-x-4 my-2'>
           <BotonDashboard />
         </div>
       </div>

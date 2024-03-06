@@ -34,7 +34,7 @@ function NavBar() {
               whileTap={{ scale: 0.9 }}
             >
               <li className="text-gray-600 font-semibold hover:text-sky-500 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                <Link href="/about" >Proyectos</Link>
+                <Link href="/about" >Normas</Link>
               </li>
             </motion.button>
             <motion.button
@@ -42,7 +42,7 @@ function NavBar() {
               whileTap={{ scale: 0.9 }}
             >
               <li className="text-gray-600 font-semibold hover:text-sky-500 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                <Link href="/contact">Servicios</Link>
+                <Link href="/contact">Formulas</Link>
               </li>
             </motion.button>
             <motion.button
@@ -50,7 +50,23 @@ function NavBar() {
               whileTap={{ scale: 0.9 }}
             >
               <li className="text-gray-600 font-semibold hover:text-sky-500 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                <Link href="/contact">Cursos</Link>
+                <Link href="/contact">Anexos</Link>
+              </li>
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <li className="text-gray-600 font-semibold hover:text-sky-500 max-[768px]:text-[12px] max-[320px]:text-[10px]">
+                <Link href="/contact">Codigo</Link>
+              </li>
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <li className="text-gray-600 font-semibold hover:text-sky-500 max-[768px]:text-[12px] max-[320px]:text-[10px]">
+                <Link href="/contact">Sobre mi</Link>
               </li>
             </motion.button>
             </ul>
@@ -59,11 +75,11 @@ function NavBar() {
           <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <Link href="/">
               <div className="flex ml-[50px] max-[425px]:ml-0 ">
-                <h5 className="font-bold mr-1 text-blue-600 hover:text-emerald-500 max-[768px]:text-[16px] ">
+                <h5 className="font-bold text-lg mr-1 text-blue-600 hover:text-emerald-500 max-[768px]:text-[16px] ">
                   Speed
                 </h5>
-                <h5 className="font-bold  text-emerald-500 hover:text-blue-600 max-[768px]:text-[16px]">Structural</h5>
-                <h5 className="font-bold  max-[768px]:text-[16px]">.</h5>
+                <h5 className="font-bold text-lg text-emerald-500 hover:text-blue-600 max-[768px]:text-[16px]">Structural</h5>
+                <h5 className="font-bold text-lg max-[768px]:text-[16px]">.</h5>
               </div>
             </Link>
           </motion.button>
@@ -76,7 +92,7 @@ function NavBar() {
               whileTap={{ scale: 0.9 }}
             >
               <li className="text-gray-600 font-semibold hover:text-blue-600 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                <Link href="/about" >Proyectos</Link>
+                <Link href="/normas" >Normas</Link>
               </li>
             </motion.button>
             <motion.button
@@ -84,7 +100,7 @@ function NavBar() {
               whileTap={{ scale: 0.9 }}
             >
               <li className="text-gray-600 font-semibold hover:text-emerald-600 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                <Link href="/contact">Servicios</Link>
+                <Link href="/contact">Formulas</Link>
               </li>
             </motion.button>
             <motion.button
@@ -92,19 +108,36 @@ function NavBar() {
               whileTap={{ scale: 0.9 }}
             >
               <li className="text-gray-600 font-semibold hover:text-blue-600 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                <Link href="/contact">Cursos</Link>
+                <Link href="/contact">Anexos</Link>
+              </li>
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <li className="text-gray-600 font-semibold hover:text-blue-600 max-[768px]:text-[12px] max-[320px]:text-[10px]">
+                <Link href="/contact">Código</Link>
+              </li>
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <li className="text-gray-600 font-semibold hover:text-blue-600 max-[768px]:text-[12px] max-[320px]:text-[10px]">
+                <Link href="/contact">Sobre mi</Link>
               </li>
             </motion.button>
             </ul>
         </div>
         <div className="navbar-end">
           <Link href="/dashboard">
-          <button
-            type="button"
+          <motion.button whileHover={{ scale: 0.9 }} whileTap={{ scale: 1.9 }}>
+          <p
             className=" bg-emerald-600 hover:bg-blue-600 text-white text-sm leading-6 font-medium py-1 px-3 rounded-lg"
           >
-            Empieza tu calculo
-          </button>
+            Descargar manual
+          </p>
+          </motion.button>
           </Link>
         </div>
       </div>

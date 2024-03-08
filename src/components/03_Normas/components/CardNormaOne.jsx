@@ -11,7 +11,7 @@ function CardNormaOne({norma, description, img, enlace}) {
           <p className='text-sm mb-2 text-justify leading-4 h-[150px]'>
             {description}
           </p>
-          <div className='relative w-full h-[200px] '>
+          <div className=' w-full h-[200px] '>
             <img className='object-cover w-full h-full rounded-lg' src={img} />
           </div>
           

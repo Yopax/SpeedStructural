@@ -4,7 +4,7 @@ import CardNormaOne from "./components/CardNormaOne";
 function Normas() {
   return (
     <>
-      <div className="grid grid-cols-4 space-x-4 mx-40">
+      <div className="grid mb1:grid mb1:justify-center mb4:space-x-4 mb4:mx-20 mb1:mx-10 mb1:grid-cols-1  mb4:grid-cols-4 mb4:w-auto">
         <CardNormaOne
           norma="Norma ACI 318-14"
           enlace="https://drive.google.com/uc?export=download&id=1T-wYVkZtQ2xprFC1eRqxprocpMl9f9My"

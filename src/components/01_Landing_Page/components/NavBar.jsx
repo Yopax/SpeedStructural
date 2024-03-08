@@ -34,7 +34,7 @@ function NavBar() {
               whileTap={{ scale: 0.9 }}
             >
               <li className="text-gray-600 font-semibold hover:text-sky-500 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                <Link href="/about" >Normas</Link>
+                <Link href="/normas" >Normas</Link>
               </li>
             </motion.button>
             <motion.button

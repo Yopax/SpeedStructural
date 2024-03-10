@@ -1,19 +1,18 @@
 import React from 'react'
 
-function EcuacionQa() {
+function  EcuacionQa() {
   return (
     <>
       <math>
-        <mi>qadm</mi>
-        <mo>=</mo>
         <mfrac>
           <mrow>
-              <mn>qultm</mn>
+              <mn>Pservicio</mn>
           </mrow>
           <mrow>
-            <mn>FS</mn> <mo>&#8290;</mo>
+            <mn>K*Acimiento</mn> <mo>&#8290;</mo>
           </mrow>
         </mfrac>
+        <mo>≤ qa</mo>
       </math>
     </>
   );

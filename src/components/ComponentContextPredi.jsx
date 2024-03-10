@@ -8,7 +8,7 @@ const commonInputClasses = "text-gray-700 border border-solid rounded-md text-ce
 const claseOne = "font-medium text-gray-900 font justify-between  text-xs mx-2";
 const subTitle = "text-xs text-white font-bold my-2";
 const claseTwo = "text-xs text-white font-medium mx-2 ";
-const claseDivOne = " flex flex-col self-center text-white items-center justify-center text-center m-2 rounded-md h-72 w-44 bg-emerald-700"
+const claseDivOne = "flex flex-col self-center text-white items-center justify-center text-center m-2 rounded-md h-72 w-44 bg-emerald-700"
 
 
 //Formula para calcular la losa aligerada para las tres formas
@@ -441,8 +441,8 @@ los distintos elementos estructurales que componen al edificio. Este proceso es 
 momentos flectores, salvo que estos sean muy importantes.  
         </p>
 
-        <div className="w-screen justify-center text-center items-center p-2 grid grid-cols-7 max-[1024px]:grid-cols-3 max-[768px]:grid-cols-2 max-[425px]:grid-cols-1 mt-8 mb-8 ">
-        <div className={claseDivOne}>
+        <div className="w-full justify-center text-center items-center p-2 grid grid-cols-5 max-[1024px]:grid-cols-3 max-[768px]:grid-cols-2 max-[425px]:grid-cols-1 mt-8 mb-8 ">
+        <div className={claseDivOne}  >
   
           <p  className="mb-2">Paños</p>
           <label className={claseTwo}>

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 function NavBar() {
   return (
     <div>
-      <div className="fixed navbar bg-base-100">
+      <div className="fixed navbar bg-base-100 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -42,15 +42,7 @@ function NavBar() {
               whileTap={{ scale: 0.9 }}
             >
               <li className="text-gray-600 font-semibold hover:text-sky-500 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                <Link href="/contact">Formulas</Link>
-              </li>
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <li className="text-gray-600 font-semibold hover:text-sky-500 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                <Link href="/contact">Anexos</Link>
+                <Link href="/formulas">Formulas</Link>
               </li>
             </motion.button>
             <motion.button
@@ -100,15 +92,7 @@ function NavBar() {
               whileTap={{ scale: 0.9 }}
             >
               <li className="text-gray-600 font-semibold hover:text-emerald-600 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                <Link href="/contact">Formulas</Link>
-              </li>
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <li className="text-gray-600 font-semibold hover:text-blue-600 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                <Link href="/contact">Anexos</Link>
+                <Link href="/formulas">Formulas</Link>
               </li>
             </motion.button>
             <motion.button

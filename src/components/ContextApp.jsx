@@ -11,7 +11,7 @@ function ContextApp() {
     <ContextOneProvider>
       <NavBarCalculo />
       <PreConsideraciones />
-      <div className="mt-[63px] flex flex-col space-x-4 mx-8 justify-center">
+      <div className="w-auto mt-[63px] flex flex-col space-x-4 mx-8 justify-center">
         <div className="flex flex-col">
           <div className="flex flex-col w-full space-y-2">
 

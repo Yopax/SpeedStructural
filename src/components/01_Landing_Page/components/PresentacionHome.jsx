@@ -9,7 +9,7 @@ function PresentacionHome() {
           <h4 className="font text-emerald-600  mb1:text-[13px] font-medium mt-[140px] mb1:mx-4 mb4:text-lg ">
             Web App creada para optimizar tu tiempo de cálculo del
           </h4>
-          <h1 className=" flex justify-center mb4:mx-[350px] text-emerald-600 font-extrabold text-center mb4:my-6 mb1:my-2 mb1:text-emerald-600 mb4:text-emerald-600 mb4:text-6xl mb1:text-[38px] mb1:px-2">
+          <h1 className=" flex justify-center mb4:mx-[350px] text-emerald-600 font-extrabold text-center mb4:my-6 mb1:my-2 mb1:text-emerald-600 mb4:text-emerald-600 mb4:text-6xl mb1:text-[30px] mb1:px-2">
             Predimensionamiento y metrado de cargas.
             <br />
           </h1>

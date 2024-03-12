@@ -9,7 +9,7 @@ function Menu() {
     <>
       <div className="flex ">
         <div>
-          <ul className="menu bg-white border border-r-gray-300 bg-opacity-90 w-[260px] h-[546px]">
+          <ul className="menu bg-white border border-r-gray-300 dark:bg-white bg-opacity-90 w-[260px] h-[546px]">
             <div className="flex mt-[30px]">
               <div className="avatar online">
                 <div className="w-10 rounded-full ">

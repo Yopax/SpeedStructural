@@ -4,7 +4,7 @@ import CardPlus from "./CardPlus";
 function CardTwo() {
   return (
     <>
-      <div className=" flex w-full h-[00px]">
+      <div className=" flex w-full dark:bg-white">
         <div className="flex-col">
           <p className="text-sm text-sky-700 font-medium my-4">Selecciona el tipo de Sistema estructural</p>
           <p className="text-sm my-7">Citando la norma Peruana E.030 de Diseño sismoresistente en su 

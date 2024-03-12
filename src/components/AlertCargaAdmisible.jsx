@@ -1,3 +1,4 @@
+"use client"  // This line is not needed in the snippet
 import React from 'react'
 import EcuacionQa from './EcuacionQa';
 
@@ -15,9 +16,9 @@ function AlertCargaAdmisible() {
           <h3 className="font-bold text-lg">
             Predimensionamiento de la zapatas
           </h3>
-          <p className="text-xs font-bold my-4">
+          <h4 className="text-xs font-bold my-4">
             Se obtiene Mediante la siguiente formula:
-          </p>
+          </h4>
           <div className="text-center justify-center">
             <EcuacionQa />
           </div>

@@ -8,7 +8,7 @@ function DashBoard() {
   return (
     <>
       <NavBar />
-      <div className="flex">
+      <div className="flex dark:bg-white">
         <div className="flex">
           <Menu />
           <div className="flex">

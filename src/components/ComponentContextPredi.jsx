@@ -2,9 +2,8 @@
 import React from "react";
 import { useGeneralContext } from "@/app/context/GeneralContext";
 import { useEffect, useState } from "react";
-import AlertLosaOne from "./AlertLosaOne";
 
-const commonInputClasses = "text-gray-700 border border-solid rounded-md text-center border-gray-300 w-[120px] text-xs py-1";
+const commonInputClasses = " dark:text-white text-gray-700 border border-solid rounded-md text-center border-gray-300 w-[120px] text-xs py-1";
 const claseOne = "font-medium text-gray-900 font justify-between  text-xs mx-2";
 const subTitle = "text-xs text-white font-bold my-2";
 const claseTwo = "text-xs text-white font-medium mx-2 ";
@@ -188,7 +187,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
     <>
       <div>
         <hr />
-        <div className="flex">
+        <div className="flex ">
           <div className="my-2  mr-[68px] bg-emerald-700 w-[336px] p-4 rounded-md">
             <p className={subTitle}>Losas - Ingresa los datos solicitados:</p>
             <div className="flex my-4 justify-between">
@@ -246,7 +245,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
             asumimos {roundedValue} cm y para el ultimo piso consideramos{" "}
             {roundedValue - 5}cm.
           </p>
-            <AlertLosaOne />
+            
           </div>
         </div>
         <hr className="my-1" />
@@ -332,10 +331,10 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
           </div>
         </div>
         
-        <div className="mt-[130px] overflow-x-auto justify-center items-center">
-            <table className="table">
+        <div className="overflow-x-auto my-8">
+            <table className="table w-[50%]">
               <thead>
-                <tr className="text-center">
+                <tr className="text-center  ">
                   <th></th>
                   <th>Viga eje x - x</th>
                   <th>Vigas eje y - y</th>
@@ -366,7 +365,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
                 </tr>
               </tbody>
             </table>
-            <AlertLosaOne />
+            
           </div>
           
         </div>
@@ -429,7 +428,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
             Recomendación : la altura de la zapata sera de (50cm) es una altura
             tentativa, por favor verificar por punzonamiento.
           </p>
-            <AlertLosaOne />
+            
           </div>
           
         </div>

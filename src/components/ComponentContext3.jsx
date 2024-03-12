@@ -415,11 +415,11 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
         <h5 className="font2 text-sm font-medium text-white w-[88px] px-3 bg-slate-500 rounded-md">
           Resultado
         </h5>
-        <h2 className="font2 font-black text-gray-800 text-4xl text-center items-center mt-6">
+        <h2 className="dark:text-gray-200 font2 font-black text-gray-800 text-4xl text-center items-center mt-6">
           METRADO DE CARGAS
         </h2>
         <h2 className="font2 font-medium text-center">{inputValue1}</h2>
-        <p className="font2 text-[16px] text-gray-800 font-bold my-2 italic">
+        <p className="dark:text-gray-200 font2 text-[16px] text-gray-800 font-bold my-2 italic">
           Premisa:
         </p>
       </div>

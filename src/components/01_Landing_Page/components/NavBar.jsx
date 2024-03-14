@@ -99,7 +99,7 @@ function NavBar() {
             </ul>
         </div>
         <div className="navbar-end">
-          <Link href="/dashboard">
+          <Link href="https://drive.google.com/uc?export=download&id=1Lpx0-9vAiSqdxUTL9IQ_FheY1htgngo6">
           <motion.button whileHover={{ scale: 0.9 }} whileTap={{ scale: 1.9 }}>
           <p
             className=" bg-emerald-600 hover:bg-blue-600 text-white text-sm leading-6 font-medium py-1 px-3 rounded-lg"

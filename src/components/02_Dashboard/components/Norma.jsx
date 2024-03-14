@@ -7,7 +7,7 @@ function Norma({title}) {
       <li>
         <div>
           <IoDocumentTextOutline />
-          <a className="text-sm my-2 font font-medium">{title}</a>
+          <p className="text-sm my-2 font font-medium">{title}</p>
         </div>
       </li>
     </>

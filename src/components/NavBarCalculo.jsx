@@ -30,17 +30,17 @@ function NavBarCalculo() {
               >
                 <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <li className="text-gray-600 font-semibold hover:text-sky-500 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                    <Link href="/about">Proyectos</Link>
+                    <Link href="/normas" target='blank'>Normas</Link>
                   </li>
                 </motion.button>
                 <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <li className="text-gray-600 font-semibold hover:text-sky-500 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                    <Link href="/contact">Servicios</Link>
+                    <Link href="/formulas" target='blank'>Formulas</Link>
                   </li>
                 </motion.button>
                 <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                   <li className="text-gray-600 font-semibold hover:text-sky-500 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                    <Link href="/contact">Cursos</Link>
+                    <Link href="/about">Autor</Link>
                   </li>
                 </motion.button>
               </ul>
@@ -65,30 +65,31 @@ function NavBarCalculo() {
             <ul className="flex gap-x-10 text-[14px]  mr-0 md:mr-[50px] max-[470px]:gap-4 max-[470px]:text-[12px] max-[320px]:text-[10px] max-[320px]:gap-x-3 ">
               <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <li className="text-gray-600 font-semibold hover:text-blue-600 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                  <Link href="/about">Proyectos</Link>
+                  <Link href="/normas">Normas</Link>
                 </li>
               </motion.button>
               <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <li className="text-gray-600 font-semibold hover:text-emerald-600 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                  <Link href="/contact">Servicios</Link>
+                  <Link href="/formulas">Formulas</Link>
                 </li>
               </motion.button>
               <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <li className="text-gray-600 font-semibold hover:text-blue-600 max-[768px]:text-[12px] max-[320px]:text-[10px]">
-                  <Link href="/contact">Cursos</Link>
+                  <Link href="/about">Autor</Link>
                 </li>
               </motion.button>
             </ul>
           </div>
           <div className="navbar-end">
-            <Link href="/dashboard">
-              <button
-                type="button"
-                className=" bg-emerald-600 hover:bg-blue-600 text-white text-sm leading-6 font-medium py-1 px-3 rounded-lg"
-              >
-                Descargar Manual
-              </button>
-            </Link>
+          <Link href="https://drive.google.com/uc?export=download&id=1Lpx0-9vAiSqdxUTL9IQ_FheY1htgngo6">
+          <motion.button whileHover={{ scale: 0.9 }} whileTap={{ scale: 1.2 }}>
+          <p
+            className=" bg-emerald-600 hover:bg-blue-600 text-white text-sm leading-6 font-medium py-1 px-3 rounded-lg"
+          >
+            Descargar manual
+          </p>
+          </motion.button>
+          </Link>
           </div>
         </div>
       </div>

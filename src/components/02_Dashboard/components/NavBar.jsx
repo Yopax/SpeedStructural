@@ -1,8 +1,7 @@
 import React from "react";
 import { FaArrowDown } from "react-icons/fa";
-
-import Reloj from "./Reloj";
-
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 function NavBar() {
   return (
@@ -18,11 +17,19 @@ function NavBar() {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <Reloj />
+          
         </div>
         <div className="navbar-end mr-4">
-          <a className="btn btn-sm">Descargar Manual<FaArrowDown />
-</a>
+          <Link href="https://drive.google.com/uc?export=download&id=1Lpx0-9vAiSqdxUTL9IQ_FheY1htgngo6">
+          <motion.button whileHover={{ scale: 0.9 }} whileTap={{ scale: 1.9 }}>
+          <p
+            className=" bg-slate-600 hover:bg-blue-600 text-white text-sm leading-6 font-medium py-1 px-3 rounded-lg"
+          >
+            Descargar manual
+          </p>
+          </motion.button>
+          </Link>
+
         </div>
         
       </div>

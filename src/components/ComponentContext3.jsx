@@ -1,3 +1,4 @@
+"use client"
 // ComponentContext3.js
 import React from "react";
 import { useEffect, useState } from "react";
@@ -6,12 +7,17 @@ import { useRef } from "react";
 import { useReactToPrint } from 'react-to-print';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { saveAs } from 'file-saver';
+import * as docx from 'docx';
+import { TextRun,Document, Packer, Paragraph, Table, TableCell, 
+  TableRow, WidthType, Header, Footer, HeadingLevel, 
+  AlignmentType, VerticalAlign, BorderStyle, Alignment } from "docx";
+
+
+
 
 function ComponentContext3() {
-
-
   
-
 
   const { inputValue1, inputValue2,inputValue4,inputValue5,
     inputValue6,inputValue7,inputValue8,inputValue9,inputValue10,
@@ -258,8 +264,6 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
     });
     // Descripción de la tabla
     doc.setFontSize(8);
-    doc.text(`Recomendacion : en la losa aligerada para los primeros pisos asumimos ${roundedValue} cm y para el ultimo piso consideramos ${roundedValue - 5}cm.`, 14, doc.autoTable.previous.finalY + 3);
-
 
     doc.setFontSize(10);
     doc.text("Predimensionamiento - Columnas", 15, 148);
@@ -272,7 +276,6 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
     });
     // Descripción de la tabla
     doc.setFontSize(8);
-    doc.text(`Recomendacion : en la losa aligerada para los primeros pisos asumimos ${roundedValue} cm y para el ultimo piso consideramos ${roundedValue - 5}cm.`, 14, doc.autoTable.previous.finalY + 3);
 
 
     doc.setFontSize(10);
@@ -405,9 +408,2767 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
       body: tableRows11,
     });
 
+    //crea otra pagina
+    doc.addPage();
+    doc.setFontSize(12);
+    doc.text("03. Formulas empleadas para los cálculos", 15, 18);
+    doc.setFontSize(12);
+    doc.text("Formulas empleadas para calcular el predimensionamiento de las losas", 15, 29);
+    doc.setFontSize(10);
+    doc.text("Las formulas utilizadas para calcular las losas fueron las siguientes, para la losa aligerada: ln/25, ", 15, 35);
+    doc.text("para la Losa Prefabricada Pretensada: ln/28, para la losa maciza: ln/30, para la losa maciza ", 15, 40 );
+    doc.text("bidireccional: ln x-x *2 + ln y-y*2 / 140", 15, 45 );
+
+    doc.setFontSize(12);
+    doc.text("Formulas empleadas para calcular el predimensionamiento de las vigas", 15, 55);
+    doc.setFontSize(10);
+    doc.text("Las formulas utilizadas para calcular las vigas es ta dada por, para la altura: ln/10 y para la base: ", 15, 60);
+    doc.text("la altura /2, esto aplica para ambas direcciones.", 15, 65 );
+
+    doc.setFontSize(12);
+    doc.text("Formulas empleadas para calcular el predimensionamiento de las columnas", 15, 75);
+    doc.setFontSize(10);
+    doc.text("Para las columnas centradas: pservicio = carga de la edificacion(P)*AT - Columna Centrada:*N de pisos; ", 15, 80);
+    doc.text("AreaColumna = (pservicio/(0.45*f´c del concreto))", 15, 85 );
+    doc.text("Para las columnas excentricas: pservicio = carga de la edificacion(P)*AT - Columna excentrica:*N de pisos; ", 15, 90);
+    doc.text("AreaColumna = (pservicio/(0.35*f´c del concreto))", 15, 95 );
+    doc.text("Para las columnas esquinadas: pservicio = carga de la edificacion(P)*AT - Columna esquinada:*N de pisos; ", 15, 100);
+    doc.text("AreaColumna = (pservicio/(0.35*f´c del concreto))", 15, 105 );
+
+    doc.setFontSize(12);
+    doc.text("Formulas empleadas para calcular el predimensionamiento de las zapatas", 15, 115);
+    doc.setFontSize(10);
+    doc.text("Para las zapatas centradas: pservicio = carga de la edificacion(P)*AT - Zapata Centrada:*N de pisos; ", 15, 120);
+    doc.text("AreaZapata = (pservicio/(tipo de suelo*capacidad admisible))", 15, 125 );
+    doc.text("Para las zapatas excentricas: pservicio = carga de la edificacion(P)*AT - Zapata Excentrica:*N de pisos; ", 15, 130);
+    doc.text("AreaZapata = (pservicio/(tipo de suelo*capacidad admisible))", 15, 135 );
+    doc.text("Para las zapatas esquinadas: pservicio = carga de la edificacion(P)*AT - Zapata Esquinada:*N de pisos; ", 15, 140);
+    doc.text("AreaZapata = (pservicio/(tipo de suelo*capacidad admisible))", 15, 145 );
+
+    //para el metreado de cargas
+
+    doc.setFontSize(12);
+    doc.text("Formulas empleadas para calcular el metrado de cargas", 15, 155);
+
+    //losa aligerada
+    doc.setFontSize(10);
+    doc.text("Para la losa aligerada: np*ca*dx*dy", 15, 160);
+    doc.text(`Resultado: ${np}*${ca}*${dx}*${dy} = ${resultado_redondeado}`, 15, 165);
+
+    //columnas
+    doc.setFontSize(10);
+    doc.text("Para las columnas: nc*pec*dx_col*dy_col*l_col", 15, 175);
+    doc.text(`Resultado: ${nc}*${pec}*${dx_col}*${dy_col}*${l_col} = ${resultado_redondeado2}`, 15, 180);
+
+    //columnas primer piso
+    doc.setFontSize(10);
+    doc.text("Para las columnas del primer piso: nc*pec*dx_col*dy_col*c", 15, 190);
+    doc.text(`Resultado: ${nc}*${pec}*${dx_col}*${dy_col}*${c} = ${columnas2}`, 15, 195);
+
+    //vigas
+    doc.setFontSize(10);
+    doc.text("Para las vigas en y: nvx*pec*dx_vgx*dy_vgx*l_vgx", 15, 205);
+    doc.text(`Resultado: ${nvx}*${pec}*${dx_vgx}*${dy_vgx}*${l_vgx} = ${resultado_redondeado3}`, 15, 210);
+
+    doc.setFontSize(10);
+    doc.text("Para las vigas en x: nvy*pec*dx_vgy*dy_vgy*l_vgy", 15, 220);
+    doc.text(`Resultado: ${nvy}*${pec}*${dx_vgy}*${dy_vgy}*${l_vgy} = ${resultado_redondeado4}`, 15, 225);
+
+    //carga viva
+    doc.setFontSize(10);
+    doc.text("Para el techo: cv*dx_t*dy_t", 15, 235);
+    doc.text(`Resultado: ${cv}*${dx_t}*${dy_t} = ${resultado_redondeado5}`, 15, 240);
+
+    doc.setFontSize(10);
+    doc.text("Para el techo intermedio: cvr*dx_t*dy_t", 15, 250);
+    doc.text(`Resultado: ${cvr}*${dx_t}*${dy_t} = ${resultadocvpinter}`, 15, 255);
 
     doc.save("informe.pdf");
   };
+  const downloadDocument = async () => {
+    const header = new Header({
+        children: [new Paragraph("Impacto del Calentamiento Global")],
+    });
+
+    const footer = new Footer({
+        children: [new Paragraph("Fuente: Datos recopilados")],
+    });
+
+    const title = new Paragraph({ 
+        children: [new TextRun({
+            text: "Informe Final - Diseño y análisis estructural",
+            size: 36,
+            bold: true,
+            
+        })],
+        spacing: {
+            before: 200,
+            after: 400,
+        },
+        alignment: AlignmentType.CENTER,
+        
+    });
+    const description2 = new Paragraph({ 
+        children: [new TextRun({
+            text: "Tabla 2 - Predimensionamiento de vigas",    
+        })],
+        spacing: {
+            before: 400,
+        },            
+    });
+    const description3 = new Paragraph({ 
+        children: [new TextRun({
+            text: "Tabla 3 - Predimensionamiento de columnas",    
+        })],
+        spacing: {
+            before: 400,
+        },            
+    });
+    const description4 = new Paragraph({ 
+        children: [new TextRun({
+            text: "Tabla 4 - Predimensionamiento de zapatas",    
+        })],
+        spacing: {
+            before: 400,
+        },            
+    });
+    const description5 = new Paragraph({ 
+        children: [new TextRun({
+            text: `Tabla 5 - Carga muerta- Último piso(piso${inputValue2}:)`   
+        })],
+        spacing: {
+            before: 400,
+        },            
+    });
+    const description6 = new Paragraph({ 
+        children: [new TextRun({
+            text: "Tabla 6 - Carga viva - Último piso",    
+        })],
+        spacing: {
+            before: 400,
+        },            
+    });
+    const description7 = new Paragraph({ 
+        children: [new TextRun({
+            text: "Tabla 7 - Carga muerta - Pisos intermedios (son todos los pisos sin tener en cuenta el ultimo ni el primero:)",    
+        })],
+        spacing: {
+            before: 400,
+        },            
+    });
+    const description8 = new Paragraph({ 
+        children: [new TextRun({
+            text: "Tabla 8 - Carga viva - Pisos intermedios (son todos los pisos sin tener en cuenta el ultimo ni el primero:)",    
+        })],
+        spacing: {
+            before: 400,
+        },            
+    });
+    const description9 = new Paragraph({ 
+        children: [new TextRun({
+            text: "Tabla 9 - Carga muerta - Primer piso",    
+        })],
+        spacing: {
+            before: 400,
+        },            
+    });
+    const description10 = new Paragraph({ 
+        children: [new TextRun({
+            text: "Tabla 10 - Carga viva - Primer piso",    
+        })],
+        spacing: {
+            before: 400,
+        },            
+    });
+    const description11 = new Paragraph({ 
+        children: [new TextRun({
+            text: "Tabla 11 - Totales de cargas",    
+        })],
+        spacing: {
+            before: 400,
+        },            
+    });
+
+
+    const subtitle = new Paragraph({ 
+        children: [new TextRun({
+            text: "01. Predimensionamiento de elementos estructurales",
+            size: 24,
+            bold: true,
+        })],          
+    });
+    const subtitle2 = new Paragraph({ 
+        children: [new TextRun({
+            text: "02. Metrado de cargas",
+            size: 24,
+            bold: true,
+        })], 
+        spacing: {
+            before: 400,
+        },         
+    });
+
+    const introduction = new Paragraph({
+        children: [new TextRun({
+            text: "Estas dimensiones preliminares son fundamentales para permitir un Análisis Estructural que cumpla lo establecido por las normas Peruanas (José Alberto, 2022).",
+            size: 24,
+        })],
+        spacing: {
+            after: 200,
+            before: 150,
+        },
+    });
+    const introduction2 = new Paragraph({
+        children: [new TextRun({
+            text: "Efectuamos el metrado de cargas, calculando los pesos por pisos y para ello utilizamos la Norma de Cargas E-0.20",
+            size: 24,
+        })],
+        spacing: {
+            after: 200,
+            before: 150,
+        },
+    });
+
+    const table = new Table({
+        columnWidths: [3505, 3505,3505,3505],
+        rows: [
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "",
+                                size: 20,
+                                bold: true,
+                                
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Losa Aligerada",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Losa Prefabricada Pretensada",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Losa maciza",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Losa maciza Bidireccional",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Altura(h)",
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${roundedValue}cm`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${roundedValue2}cm`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${roundedValue3}cm`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${perimetroNumerico}cm`,
+                                size: 20,
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                ],
+            }),
+            
+        ],
+    });
+    const table2 = new Table({
+        columnWidths: [3505, 3505,3505],
+        rows: [
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "viga eje x-x ",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "viga eje y-y ",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Altura(h)",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${vigax}cm`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${vigay}cm`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Base",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${vigax/2}cm`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${vigay/2}cm`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+        ],
+    });
+    const table3 = new Table({
+        columnWidths: [3505, 3505,3505,3505],
+        rows: [
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Columna centrada",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Columna esquinada ",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Columna excéntrica",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Altura(h)",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${acolumnofinal}cm`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${acolumnofinal2}cm`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${acolumnofinal3}cm`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Base",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${acolumnofinal}cm`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${acolumnofinal2}cm`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${acolumnofinal3}cm`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                ],
+            }),
+        ],
+    });
+    const table4 = new Table({
+        columnWidths: [3505, 3505,3505,3505],
+        rows: [
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Zapata centrada",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Zapata esquinada",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Zapata excéntrica",                                 
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Altura(h)",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "50cm",
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "50cm",
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "50cm",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Size x",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${azapatacentrada}cm`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${azapataesquinada}cm`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${azapataexcentrica}cm`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Size y",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${azapatacentrada}cm`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${azapataesquinada}cm`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${azapataexcentrica}cm`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                ],
+            }),
+        ],
+    });
+    const table5 = new Table({
+        columnWidths: [3505, 3505,3505,3505],
+        rows: [
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },
+                            left: {
+                                style: BorderStyle.NIL,
+                            },
+                        
+                        },
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Losa Aligerada",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Columnas",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Viga x-x",                                 
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },
+                            right: {
+                                style: BorderStyle.NIL,
+                            },
+                         },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Viga y-y",                                 
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            left: {
+                                style: BorderStyle.NIL,
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "CM",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeado}`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeado2}`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeado3}`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            right: {
+                                style: BorderStyle.NIL,
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeado4}`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+
+        ],
+    });
+    const table6 = new Table({
+        columnWidths: [3505, 3505,3505, 3505],
+        rows: [
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 5000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 5000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Techo",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "CV",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeado5}`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+
+        ],
+    });
+    const table7 = new Table({
+        columnWidths: [3505, 3505,3505,3505],
+        rows: [
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Losa Aligerada",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Columnas",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Viga x-x",                                 
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Viga y-y",                                 
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "CM",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeadop2}`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeado2}`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeado3}`,
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeado4}`,
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+
+        ],
+    });
+    const table8 = new Table({
+        columnWidths: [3505, 3505,3505, 3505],
+        rows: [
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 5000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 5000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Techo",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "CV",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultadocvpinter}`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+
+        ],
+    });
+    const table9 = new Table({
+        columnWidths: [3505, 3505,3505,3505],
+        rows: [
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Losa Aligerada",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Columnas",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Viga x-x",                                 
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Viga y-y",                                 
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "CM",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeadop2}`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${columnas2}`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeado3}`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeado4}`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+
+        ],
+    });
+    const table10 = new Table({
+        columnWidths: [3505, 3505,3505, 3505],
+        rows: [
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 5000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 5000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Techo",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "CV",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultadocvpinter}`,
+                                size: 20,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+
+        ],
+    });
+    const table11 = new Table({
+        columnWidths: [3505, 3505,3505,3505],
+        rows: [
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Ultimo Piso",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Pisos intermedios",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            }, },
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Primer piso",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+            new TableRow({
+                children: [
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 2000,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: "Cargas Totales",
+                                size: 20,
+                                bold: true,
+                                
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeado + resultado_redondeado2 + resultado_redondeado3 + resultado_redondeado4+resultado_redondeado5}`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeadop2 + resultado_redondeado2 + resultado_redondeado3 + resultado_redondeado4+resultadocvpinter}`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+                    new TableCell({
+                        borders: {
+                            top: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                                
+                            },
+                            
+                            bottom: {
+                                style: BorderStyle.THIN_THICK_LARGE_GAP,
+                                size: 8,
+                                color: "000000",
+                            },},
+                        width: {
+                            size: 3505,
+                            type: WidthType.DXA,
+                        },
+                        children: [new Paragraph({
+                            children: [new TextRun({
+                                text: `${resultado_redondeadop2 + columnas2 + resultado_redondeado3 + resultado_redondeado4+resultadocvpinter}`,
+                                size: 20,                                    
+                        })],
+                        alignment: AlignmentType.CENTER,})],
+                    }),
+
+                ],
+            }),
+        ],
+    });
+    
+    const doc = new Document({
+        
+        sections: [
+            {
+                properties: {},
+                headers: { default: header },
+                footers: { default: footer },
+                children: [
+                    title,
+                    subtitle,
+                    introduction,
+                    new Paragraph({ text: "Tabla 1 - Predimensionamiento de losas" }),
+                    table,
+                    new Paragraph({ text: `Recomendación : en la losa aligerada para los primeros pisos asumimos ${roundedValue} cm y para el último piso consideramos ${roundedValue - 5}cm.` }),
+                    description2,
+                    table2,
+                    description3,
+                    table3,
+                    description4,
+                    table4,
+                    new Paragraph({ text: "Recomendación : la altura de la zapata de (50cm) es una altura tentativa, verificar por punzonamiento." }),
+                    subtitle2,
+                    introduction2,
+                    description5,
+                    table5,
+                    new Paragraph({ text: `Total : ${resultado_redondeado + resultado_redondeado2 + resultado_redondeado3 + resultado_redondeado4}` }),
+                    description6,
+                    table6,
+                    new Paragraph({ text: `CV+CM : ${resultado_redondeado + resultado_redondeado2 + resultado_redondeado3 + resultado_redondeado4+resultado_redondeado5}` }),
+                    description7,
+                    table7,
+                    new Paragraph({ text: `Total : ${resultado_redondeadop2 + resultado_redondeado2 + resultado_redondeado3 + resultado_redondeado4}` }),
+                    description8,
+                    table8,
+                    new Paragraph({ text: `CV+CM: ${resultado_redondeadop2 + resultado_redondeado2 + resultado_redondeado3 + resultado_redondeado4+resultadocvpinter}` }),
+                    description9,
+                    table9,
+                    new Paragraph({ text: `Total : ${resultado_redondeadop2 + columnas2 + resultado_redondeado3 + resultado_redondeado4}` }),
+                    description10,
+                    table10,
+                    new Paragraph({ text: `CV+CM: ${resultado_redondeadop2 + columnas2 + resultado_redondeado3 + resultado_redondeado4+resultadocvpinter}` }),
+                    description11,
+                    table11,
+
+
+                ],
+            },
+        ],
+    });
+    
+    const buffer = await Packer.toBuffer(doc);
+    const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'Impacto_Calentamiento_Global.docx');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
+
+
+
 
   return (
     <div className="border w-[750px] p-8 rounded-lg mb-6">
@@ -429,8 +3190,8 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
           Para una edificación aporticada de concreto armado de {inputValue2}{" "}
           pisos destinada para {ocupacionUso} cuyas características son: <br />
           <br />
-          Peso específico del concreto: {pec} T/m^3 <br /> Altura de
-          entrepiso (de piso a piso): {inputValue4}m <br />
+          Peso específico del concreto: {pec} T/m^3 <br /> Altura de entrepiso
+          (de piso a piso): {inputValue4}m <br />
           Profundidad de desplante (contacto con platea): {inputValue5}cm <br />
           Espesor de la platea: {inputValue6}cm
         </p>
@@ -471,6 +3232,37 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
             asumimos {roundedValue} cm y para el ultimo piso consideramos{" "}
             {roundedValue - 5}cm.
           </p>
+          <button
+            className="bg-cyan-700 hover:bg-cyan-600 text-white text-xs leading-6 font-medium py-[2px] px-3 rounded-md"
+            onClick={() => document.getElementById("my_modal_1").showModal()}
+          >
+            Formulas empleadas
+          </button>
+          <dialog
+            id="my_modal_1"
+            className="modal modal-bottom sm:modal-middle"
+          >
+            <div className="modal-box">
+              <h3 className="font-bold text-lg">Formulas para losas y vigas</h3>
+              <p className="py-4 font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+                Las formulas utilizadas para calcular las losas fueron las
+                siguientes, para la losa aligerada: ln/25, para la Losa
+                Prefabricada Pretensada: ln/28, para la losa maciza: ln/30, para
+                la losa maciza bidireccional: ln x-x *2 + ln y-y*2 / 140.{" "}
+              </p>
+              <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+                Las formulas utilizadas para calcular las vigas es ta dada por,
+                para la altura: ln/10 y para la base: la altura /2, esto aplica
+                para ambas direcciones.
+              </p>
+              <div className="modal-action">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn">Close</button>
+                </form>
+              </div>
+            </div>
+          </dialog>
         </div>
 
         <div className="overflow-x-auto  mt-10">
@@ -504,6 +3296,52 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
             asumimos {roundedValue} cm y para el ultimo piso consideramos{" "}
             {roundedValue - 5}cm.
           </p>
+          <button
+            className="bg-cyan-700 hover:bg-cyan-600 text-white text-xs leading-6 font-medium py-[2px] px-3 rounded-md"
+            onClick={() => document.getElementById("my_modal_2").showModal()}
+          >
+            Formulas empleadas
+          </button>
+          <dialog
+            id="my_modal_2"
+            className="modal modal-bottom sm:modal-middle"
+          >
+            <div className="modal-box">
+              <h3 className="font-bold text-lg">Formulas para columnas</h3>
+              <div>
+                <p className="font2 text-xs mt-2 text-slate-700 underline dark:text-slate-400">
+                  Para las columnas centradas:
+                </p>
+                <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+                  pservicio = carga de la edificacion(P)*AT - Columna
+                  Centrada:*N de pisos; <br />
+                  AreaColumna = (pservicio/(0.45*f´c del concreto))
+                </p>
+                <p className="font2 text-xs mt-2 text-slate-700 underline dark:text-slate-400">
+                  Para las columnas excentricas:
+                </p>
+                <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+                  pservicio = carga de la edificacion(P)*AT - Columna
+                  excentrica:*N de pisos; <br />
+                  AreaColumna = (pservicio/(0.35*f´c del concreto))
+                </p>
+                <p className="font2 text-xs mt-2 text-slate-700 underline dark:text-slate-400">
+                  Para las columnas esquinadas:
+                </p>
+                <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+                  pservicio = carga de la edificacion(P)*AT - Columna
+                  esquinada:*N de pisos; <br />
+                  AreaColumna = (pservicio/(0.35*f´c del concreto))
+                </p>
+              </div>
+              <div className="modal-action">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn">Close</button>
+                </form>
+              </div>
+            </div>
+          </dialog>
         </div>
 
         <div className="overflow-x-auto  mt-10">
@@ -542,6 +3380,44 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
             Recomendacion : la altura de la zapataq (50cm) es una altura
             tentativa, porfavor verificar por punzonamiento.
           </p>
+          <button
+            className="bg-cyan-700 hover:bg-cyan-600 text-white text-xs leading-6 font-medium py-[2px] px-3 rounded-md"
+            onClick={() => document.getElementById("my_modal_3").showModal()}
+          >
+            Formulas empleadas
+          </button>
+          <dialog
+            id="my_modal_3"
+            className="modal modal-bottom sm:modal-middle"
+          >
+            <div className="modal-box">
+              <h3 className="font-bold text-lg">Formulas para zapatas</h3>
+              <div>
+                <p className="font2 text-xs text-cyan-600">
+                  Recomendación : la altura de la zapata sera de (50cm) es una
+                  altura tentativa, por favor verificar por punzonamiento.
+                </p>
+                <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-400">
+                  La formula para calcular las zapatas es la siguiente: Area de
+                  de la zapata = pservicio/(coeficiente del suelo * la carga
+                  admisible)
+                </p>
+                <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-400">
+                  Siendo pservicio, el calculo para cada tipo de columna, ejem:
+                  si se requiere calcular la zapata centrada se debe utilizar el
+                  pservicio de la columna centrada, este dato el programa ya lo
+                  calcula y utiliza internamente, por lo que no tendría mayor
+                  relevancia.
+                </p>
+              </div>
+              <div className="modal-action">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn">Close</button>
+                </form>
+              </div>
+            </div>
+          </dialog>
         </div>
       </div>
 
@@ -553,6 +3429,74 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
           Efectuamos el metrado de cargas, calculando los pesos por pisos y para
           ello utilizamos la Norma de Cargas E020. <br />
         </p>
+        <button
+          className="bg-cyan-700 hover:bg-cyan-600 text-white text-xs leading-6 font-medium py-[2px] px-3 rounded-md"
+          onClick={() => document.getElementById("my_modal_4").showModal()}
+        >
+          Formulas empleadas
+        </button>
+        <dialog id="my_modal_4" className="modal modal-bottom sm:modal-middle">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">
+              Formlas para el metrado de cargas
+            </h3>
+            <div>
+              <p className="font2 text-lg font-bold mt-2 text-slate-700 dark:text-slate-400">
+                Losa Aligerada = Np * Ca * Dx * Dy
+              </p>
+              <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+                Numero de paños <br />
+                Carga por área <br />
+                Dimensión en x del paño <br />
+                Dimensión en y del paño br
+              </p>
+              <p className="font2 text-lg font-bold mt-2 text-slate-700 dark:text-slate-400">
+                Columnas = Nc * Pec * Dx_col * Dy_col * L_col
+              </p>
+              <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+                Numero de columnas <br />
+                Peso especifico del concreto <br />
+                Dimensión en x de la columna <br />
+                Dimensión en y de la columna <br />
+                Longitud de la columna <br />
+              </p>
+              <p className="font2 text-lg font-bold mt-2 text-slate-700 dark:text-slate-400">
+                Viga x-x = Nv * Pec * Dx_vg * Dy_vg * L_vg
+              </p>
+              <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+                Numero de vigas <br />
+                Peso especifico del concreto <br />
+                Dimensión en x de la viga <br />
+                Dimensión en y de la viga <br />
+                Longitud de la viga <br />
+              </p>
+              <p className="font2 text-lg font-bold mt-2 text-slate-700 dark:text-slate-400">
+                Viga y-y = Nv * Pec * Dx_vg * Dy_vg * L_vg
+              </p>
+              <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+                Numero de vigas <br />
+                Peso especifico del concreto <br />
+                Dimensión en x de la viga <br />
+                Dimensión en y de la viga <br />
+                Longitud de la viga <br />
+              </p>
+              <p className="font2 text-lg font-bold mt-2 text-slate-700 dark:text-slate-400">
+                Cv = Cv_tch * Dx * Dy
+              </p>
+              <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+                Carga Viva <br />
+                Dimensión en x <br />
+                Dimensión en y <br />
+              </p>
+            </div>
+            <div className="modal-action">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="btn">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
 
         <div>
           <p className="font2 mt-4 text-sm text-red-600 font-bold">
@@ -605,16 +3549,20 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
             </tbody>
           </table>
           <p className="font2 text-xs">
-            Total General : {resultado_redondeado +
-                resultado_redondeado2 +
-                resultado_redondeado3 +
-                resultado_redondeado4+resultado_redondeado5}.
+            Total General :{" "}
+            {resultado_redondeado +
+              resultado_redondeado2 +
+              resultado_redondeado3 +
+              resultado_redondeado4 +
+              resultado_redondeado5}
+            .
           </p>
         </div>
 
         <div>
           <p className="font2 mt-4 text-sm text-red-600 font-bold">
-            Pisos itermedios (son todos  los pisos sin tener en cuenta el ultimo ni el primero:)
+            Pisos itermedios (son todos los pisos sin tener en cuenta el ultimo
+            ni el primero:)
           </p>
           <p className="font2 text-sm font-semibold">Carga Muerta</p>
           <div className="overflow-x-auto  mt-10">
@@ -663,10 +3611,13 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
             </tbody>
           </table>
           <p className="font2 text-xs">
-            Total General: {resultado_redondeadop2 +
-                resultado_redondeado2 +
-                resultado_redondeado3 +
-                resultado_redondeado4+resultadocvpinter}.
+            Total General:{" "}
+            {resultado_redondeadop2 +
+              resultado_redondeado2 +
+              resultado_redondeado3 +
+              resultado_redondeado4 +
+              resultadocvpinter}
+            .
           </p>
         </div>
         <div className="mt-8">
@@ -720,14 +3671,29 @@ const perimetroNumerico = parseFloat(perimetroRedondeado);
             </tbody>
           </table>
           <p className="font2 text-xs">
-            Total General: {resultado_redondeadop2 +
-                columnas2 +
-                resultado_redondeado3 +
-                resultado_redondeado4+resultadocvpinter}.
+            Total General:{" "}
+            {resultado_redondeadop2 +
+              columnas2 +
+              resultado_redondeado3 +
+              resultado_redondeado4 +
+              resultadocvpinter}
+            .
           </p>
         </div>
-        <button className="mt-8 bg-emerald-700 hover:bg-blue-600 p-2 rounded-lg 
-        text-white font justify-center items-center flex w-full" onClick={generarPDF}>Descargar Informe</button>
+        <button
+          className="mt-8 bg-emerald-700 hover:bg-blue-600 p-2 rounded-lg 
+        text-white font justify-center items-center flex w-full"
+          onClick={generarPDF}
+        >
+          Descargar Informe
+        </button>
+        <button
+          className="mt-8 bg-emerald-700 hover:bg-blue-600 p-2 rounded-lg 
+        text-white font justify-center items-center flex w-full"
+          onClick={downloadDocument}
+        >
+          Descargar docx
+        </button>
       </div>
     </div>
   );

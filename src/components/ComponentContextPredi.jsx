@@ -188,7 +188,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
       <div>
         <hr />
         <div className="flex ">
-          <div className="my-2  mr-[68px] bg-emerald-700 w-[336px] p-4 rounded-md">
+          <div className="my-2  mr-[68px] bg-emerald-700 w-[590px] p-4 rounded-md">
             <p className={subTitle}>Losas - Ingresa los datos solicitados:</p>
             <div className="flex my-4 justify-between">
               <label className={claseOne}>Ln - Losa aligerada:</label>
@@ -197,6 +197,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
                 placeholder="cm"
                 value={inputValue7}
                 onChange={(e) => updateInputValue7(e.target.value)}
+                type="number"
               />
             </div>
             <p className={subTitle}>Para la losa maciza bidimensional</p>
@@ -207,6 +208,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
                 placeholder="cm"
                 value={perimetroA}
                 onChange={(e) => updatePerimetroA(e.target.value)}
+                type="number"
               />
             </div>
             <div className="flex my-4 justify-between">
@@ -216,13 +218,14 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
                 placeholder="cm"
                 value={perimetroB}
                 onChange={(e) => updatePerimetroB(e.target.value)}
+                type="number"
               />
             </div>
           </div>
           <div className="overflow-x-auto my-8">
-            <table className="table">
+            <table className="table ">
               <thead>
-                <tr className="text-center">
+                <tr className="text-center ">
                   <th></th>
                   <th>Losa Aligerada</th>
                   <th>Losa Prefabricada Pretensada</th>
@@ -240,21 +243,25 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
                 </tr>
               </tbody>
             </table>
-            <p className="font2 text-xs">
-            Recomendación : en la losa aligerada para los primeros pisos
-            asumimos {roundedValue} cm y para el ultimo piso consideramos{" "}
-            {roundedValue - 5}cm.
-          </p>
-            
+            <p className="font2 text-xs dark:text-red-500">
+              Recomendación : en la losa aligerada para los primeros pisos
+              asumimos {roundedValue} cm y para el ultimo piso consideramos{" "}
+              {roundedValue - 5}cm.
+            </p>
+            <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+              Las formulas utilizadas para calcular las losas fueron las
+              siguientes, para la losa aligerada: ln/25, para la Losa
+              Prefabricada Pretensada: ln/28, para la losa maciza: ln/30, para
+              la losa maciza bidireccional: ln x-x *2 + ln y-y*2 / 140.{" "}
+            </p>
           </div>
         </div>
         <hr className="my-1" />
       </div>
-
       <div className="flex ">
         <div className="my-2 mr-[70px] bg-emerald-700 w-[320px] p-4 rounded-md">
           <p className={subTitle}>Vigas- Ingresa los datos solicitados:</p>
-          
+
           <div className="flex w-[290px] justify-between my-4">
             <label className={claseOne}>Ln - Viga en el eje x-x:</label>
             <input
@@ -262,6 +269,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               placeholder="cm"
               value={inputValue8}
               onChange={(e) => updateInputValue8(e.target.value)}
+              type="number"
             />
           </div>
           <div className="flex w-[290px] justify-between my-4">
@@ -271,6 +279,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               placeholder="cm"
               value={inputValue9}
               onChange={(e) => updateInputValue9(e.target.value)}
+              type="number"
             />
           </div>
           <p className={subTitle}>Columnas- Ingresa los datos solicitados:</p>
@@ -281,6 +290,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               placeholder="und"
               value={inputValue2}
               onChange={(e) => updateInputValue2(e.target.value)}
+              type="number"
             />
           </div>
           <div className="flex w-[290px] justify-between my-4">
@@ -290,6 +300,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               placeholder="kgf/m2"
               value={servicio}
               onChange={(e) => updateServicio(e.target.value)}
+              type="number"
             />
           </div>
           <div className="flex w-[290px] justify-between my-4">
@@ -299,6 +310,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               placeholder="kgf/cm2"
               value={inputFc}
               onChange={(e) => updateInputFc(e.target.value)}
+              type="number"
             />
           </div>
 
@@ -309,6 +321,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               placeholder="m2"
               value={inputValue10}
               onChange={(e) => updateInputValue10(e.target.value)}
+              type="number"
             />
           </div>
           <div className="flex w-[290px] justify-between my-4">
@@ -318,6 +331,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               placeholder="m2"
               value={inputValue11}
               onChange={(e) => updateInputValue11(e.target.value)}
+              type="number"
             />
           </div>
           <div className="flex w-[290px] justify-between my-4">
@@ -327,49 +341,76 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               placeholder="m2"
               value={inputValue12}
               onChange={(e) => updateInputValue12(e.target.value)}
+              type="number"
             />
           </div>
         </div>
-        
+
         <div className="overflow-x-auto my-8">
-            <table className="table w-[50%]">
-              <thead>
-                <tr className="text-center  ">
-                  <th></th>
-                  <th>Viga eje x - x</th>
-                  <th>Vigas eje y - y</th>
-                  <th>Columna Centrada</th>
-                  <th>Columna Esquinada</th>
-                  <th>Columna Excéntrica</th>
-                  
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="bg-base-200 text-center text-xs">
-                  <th>Altura</th>
-                  <td>{vigax}cm</td>
-                  <td>{vigay}cm</td>
-                  <td>{acolumnofinal}cm</td>
-                  <td>{acolumnofinal2}cm</td>
-                  <td>{acolumnofinal3}cm</td>
-                </tr>
-              </tbody>
-              <tbody>
-                <tr className="bg-base-200 text-center text-xs">
-                  <th>Base</th>
-                  <td>{vigax/2}cm</td>
-                  <td>{vigay/2}cm</td>
-                  <td>{acolumnofinal}cm</td>
-                  <td>{acolumnofinal2}cm</td>
-                  <td>{acolumnofinal3}cm</td>
-                </tr>
-              </tbody>
-            </table>
-            
-          </div>
-          
+          <table className="table ">
+            <thead>
+              <tr className="text-center  ">
+                <th></th>
+                <th>Viga eje x - x</th>
+                <th>Vigas eje y - y</th>
+                <th>Columna Centrada</th>
+                <th>Columna Esquinada</th>
+                <th>Columna Excéntrica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="bg-base-200 text-center text-xs">
+                <th>Altura</th>
+                <td>{vigax}cm</td>
+                <td>{vigay}cm</td>
+                <td>{acolumnofinal}cm</td>
+                <td>{acolumnofinal2}cm</td>
+                <td>{acolumnofinal3}cm</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr className="bg-base-200 text-center text-xs">
+                <th>Base</th>
+                <td>{vigax / 2}cm</td>
+                <td>{vigay / 2}cm</td>
+                <td>{acolumnofinal}cm</td>
+                <td>{acolumnofinal2}cm</td>
+                <td>{acolumnofinal3}cm</td>
+              </tr>
+            </tbody>
+          </table>
+          <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+            Las formulas utilizadas para calcular las vigas es ta dada por, para
+            la altura: ln/10 y para la base: la altura /2, esto aplica para
+            ambas direcciones.
+          </p>
+          <p className="font2 text-xs mt-2 text-slate-700 underline dark:text-slate-400">
+            Para las columnas centradas:
+          </p>
+          <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+            pservicio = carga de la edificacion(P)*AT - Columna Centrada:*N de
+            pisos; <br />
+            AreaColumna = (pservicio/(0.45*f´c del concreto))
+          </p>
+          <p className="font2 text-xs mt-2 text-slate-700 underline dark:text-slate-400">
+            Para las columnas excentricas:
+          </p>
+          <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+            pservicio = carga de la edificacion(P)*AT - Columna excentrica:*N de
+            pisos; <br />
+            AreaColumna = (pservicio/(0.35*f´c del concreto))
+          </p>
+          <p className="font2 text-xs mt-2 text-slate-700 underline dark:text-slate-400">
+            Para las columnas esquinadas:
+          </p>
+          <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-300">
+            pservicio = carga de la edificacion(P)*AT - Columna esquinada:*N de
+            pisos; <br />
+            AreaColumna = (pservicio/(0.35*f´c del concreto))
+          </p>
         </div>
-        <hr className="my-2" />
+      </div>
+      <hr className="my-2" />
 
       <div className="flex ">
         <div className="my-2 mr-[70px] bg-emerald-700 w-[320px] p-4 rounded-md">
@@ -381,6 +422,7 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
               placeholder="1.0, 0.9, 0.8, 0.7 "
               value={tipoSuelo}
               onChange={(e) => updateTipoSuelo(e.target.value)}
+              type="number"
             />
           </div>
           <div className="flex w-[290px] justify-between my-4">
@@ -388,12 +430,14 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
             <input
               className={commonInputClasses}
               placeholder="kg/cm2"
-              value={capacidadAdmisible} onChange={(e) => updatCapacidadAdmisible(e.target.value)}
+              value={capacidadAdmisible}
+              onChange={(e) => updatCapacidadAdmisible(e.target.value)}
+              type="number"
             />
           </div>
         </div>
         <div className="overflow-x-auto">
-            <table className="table table-xs ">
+          <table className="table table-xs ">
             <thead>
               <tr>
                 <th></th>
@@ -424,237 +468,263 @@ const acolumnofinal = Math.ceil(Math.sqrt(areaColumna) / 5) * 5
             </tbody>
             <tfoot></tfoot>
           </table>
-          <p className="font2 text-xs">
+          <p className="font2 text-xs text-cyan-600">
             Recomendación : la altura de la zapata sera de (50cm) es una altura
             tentativa, por favor verificar por punzonamiento.
           </p>
-            
-          </div>
-          
+          <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-400">
+            La formula para calcular las zapatas es la siguiente: Area de de la
+            zapata = pservicio/(coeficiente del suelo * la carga admisible)
+          </p>
+          <p className="font2 text-xs mt-2 text-slate-600 dark:text-slate-400">
+            Siendo pservicio, el calculo para cada tipo de columna, ejem: si se
+            requiere calcular la zapata centrada se debe utilizar el pservicio
+            de la columna centrada, este dato el programa ya lo calcula y
+            utiliza internamente, por lo que no tendría mayor relevancia.
+          </p>
         </div>
-        <hr className="my-2" />  
-
-        <p className="text-lg text-emerald-700 font-bold my-4">02. Metrado de Cargas</p>
-          <p className="text-sm my-4 text-justify">El metrado de cargas es una técnica con la cual se estiman las cargas actuantes sobre
-los distintos elementos estructurales que componen al edificio. Este proceso es aproximado ya que por lo general se desprecian los efectos hiperestáticos producidos por los
-momentos flectores, salvo que estos sean muy importantes.  
-        </p>
-
-        <div className="w-full justify-center text-center items-center p-2 grid grid-cols-5 max-[1024px]:grid-cols-3 max-[768px]:grid-cols-2 max-[425px]:grid-cols-1 mt-8 mb-8 ">
-        <div className={claseDivOne}  >
-  
-          <p  className="mb-2">Paños</p>
-          <label className={claseTwo}>
-            Numero de paños:
-          </label>
+      </div>
+      <hr className="my-2" />
+      <p className="text-lg text-emerald-700 font-bold my-4">
+        02. Metrado de Cargas
+      </p>
+      <p className="text-sm my-4 text-justify">
+        El metrado de cargas es una técnica con la cual se estiman las cargas
+        actuantes sobre los distintos elementos estructurales que componen al
+        edificio. Este proceso es aproximado ya que por lo general se desprecian
+        los efectos hiperestáticos producidos por los momentos flectores, salvo
+        que estos sean muy importantes. Ademas, se emplearon formulas y criterios
+        del ingeniero Angel san bartolome de su libro `Análisis de edificios`.
+      </p>
+      <div className="w-full justify-center text-center items-center p-2 grid grid-cols-5 max-[1024px]:grid-cols-3 max-[768px]:grid-cols-2 max-[425px]:grid-cols-1 mt-8 mb-8 ">
+        <div className={claseDivOne}>
+          <p className="mb-2">Paños</p>
+          <label className={claseTwo}>Numero de paños:</label>
           <input
-            className={commonInputClasses} placeholder="und"
+            className={commonInputClasses}
+            placeholder="und"
             value={np}
             onChange={(e) => updateNp(e.target.value)}
+            type="number"
           />
-          <label className={claseTwo}>
-            Carga por área:
-          </label>
+          <label className={claseTwo}>Carga por área:</label>
           <input
-            className={commonInputClasses} placeholder="tnf/m2"
+            className={commonInputClasses}
+            placeholder="tnf/m2"
             value={ca}
             onChange={(e) => updateCa(e.target.value)}
+            type="number"
           />
-          
-          <label className={claseTwo}>
-            Dim en x del paño :
-          </label>
+
+          <label className={claseTwo}>Dim en x del paño :</label>
           <input
-            className={commonInputClasses} placeholder="m"
+            className={commonInputClasses}
+            placeholder="m"
             value={dx}
             onChange={(e) => updateDx(e.target.value)}
+            type="number"
           />
-          <label className={claseTwo}>
-            Dim en x del paño :
-          </label>
+          <label className={claseTwo}>Dim en x del paño :</label>
           <input
-            className={commonInputClasses} placeholder="m"
+            className={commonInputClasses}
+            placeholder="m"
             value={dy}
             onChange={(e) => updateDy(e.target.value)}
+            type="number"
           />
         </div>
         <div className={claseDivOne}>
-        <p >Columnas</p>
-        <label className={claseTwo}>
-            Peso especifico - concreto:
-          </label>
+          <p>Columnas</p>
+          <label className={claseTwo}>Peso especifico - concreto:</label>
           <input
-            className={commonInputClasses} placeholder="tn/m3"
+            className={commonInputClasses}
+            placeholder="tn/m3"
             value={pec}
             onChange={(e) => updatePec(e.target.value)}
+            type="number"
           />
-        <label className={claseTwo}>
-          Numero de columnas :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="und"
-          value={nc}
-          onChange={(e) => updateNc(e.target.value)}
-        />
-        <label className={claseTwo}>
-          Dim x de la columna :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="m"
-          value={dx_col}
-          onChange={(e) => updateDx_col(e.target.value)}
-        />
-        <label className={claseTwo}>
-          Dim y de la columna :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="m"
-          value={dy_col}
-          onChange={(e) => updateDy_col(e.target.value)}
-        />
-        <label className={claseTwo}>
-          Longitud de la columna :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="m"
-          value={l_col}
-          onChange={(e) => updateL_col(e.target.value)}
-        />
+          <label className={claseTwo}>Numero de columnas :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="und"
+            value={nc}
+            onChange={(e) => updateNc(e.target.value)}
+            type="number"
+          />
+          <label className={claseTwo}>Dim x de la columna :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="m"
+            value={dx_col}
+            onChange={(e) => updateDx_col(e.target.value)}
+            type="number"
+          />
+          <label className={claseTwo}>Dim y de la columna :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="m"
+            value={dy_col}
+            onChange={(e) => updateDy_col(e.target.value)}
+            type="number"
+          />
+          <label className={claseTwo}>Longitud de la columna :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="m"
+            value={l_col}
+            onChange={(e) => updateL_col(e.target.value)}
+            type="number"
+          />
         </div>
         <div className={claseDivOne}>
-        <p  className="mb-10">Vigas en x</p>
-        <label className={claseTwo}>
-          Numero de vigas en x :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="und"
-          type="text"
-          value={nvx}
-          onChange={(e) => updateNvx(e.target.value)}
-        />
-        <label className={claseTwo}>
-          Dim en x de la vigax :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="m"
-          type="text"
-          value={dx_vgx}
-          onChange={(e) => updateDx_vgx(e.target.value)}
-        />
-        <label className={claseTwo}>
-          Dim en y de la vigax :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="m"
-          type="text"
-          value={dy_vgx}
-          onChange={(e) => updateDy_vgx(e.target.value)}
-        />
-        <label className={claseTwo}>
-          Longitud de la vigax :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="m"
-          type="text"
-          value={l_vgx}
-          onChange={(e) => updateL_vgx(e.target.value)}
-        />
+          <p className="mb-10">Vigas en x</p>
+          <label className={claseTwo}>Numero de vigas en x :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="und"
+            type="number"
+            value={nvx}
+            onChange={(e) => updateNvx(e.target.value)}
+          />
+          <label className={claseTwo}>Dim en x de la vigax :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="m"
+            type="number"
+            value={dx_vgx}
+            onChange={(e) => updateDx_vgx(e.target.value)}
+          />
+          <label className={claseTwo}>Dim en y de la vigax :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="m"
+            type="number"
+            value={dy_vgx}
+            onChange={(e) => updateDy_vgx(e.target.value)}
+          />
+          <label className={claseTwo}>Longitud de la vigax :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="m"
+            type="number"
+            value={l_vgx}
+            onChange={(e) => updateL_vgx(e.target.value)}
+          />
         </div>
         <div className={claseDivOne}>
-        <p  className="mb-10">Vigas en y</p>
-        <label className={claseTwo}>
-          Numero de vigas en y :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="und"
-          type="text"
-          value={nvy}
-          onChange={(e) => updateNvy(e.target.value)}
-        />
-        <label className={claseTwo}>
-          Dim en x de la vigay :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="m"
-          type="text"
-          value={dx_vgy}
-          onChange={(e) => updateDx_vgy(e.target.value)}
-        />
-        <label className={claseTwo}>
-          Dim en y de la vigay :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="m"
-          type="text"
-          value={dy_vgy}
-          onChange={(e) => updateDy_vgy(e.target.value)}
-        />
-        <label className={claseTwo}>
-          Longitud de la vigay :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="m"
-          type="text"
-          value={l_vgy}
-          onChange={(e) => updateL_vgy(e.target.value)}
-        />
+          <p className="mb-10">Vigas en y</p>
+          <label className={claseTwo}>Numero de vigas en y :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="und"
+            type="number"
+            value={nvy}
+            onChange={(e) => updateNvy(e.target.value)}
+          />
+          <label className={claseTwo}>Dim en x de la vigay :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="m"
+            type="number"
+            value={dx_vgy}
+            onChange={(e) => updateDx_vgy(e.target.value)}
+          />
+          <label className={claseTwo}>Dim en y de la vigay :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="m"
+            type="number"
+            value={dy_vgy}
+            onChange={(e) => updateDy_vgy(e.target.value)}
+          />
+          <label className={claseTwo}>Longitud de la vigay :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="m"
+            type="number"
+            value={l_vgy}
+            onChange={(e) => updateL_vgy(e.target.value)}
+          />
         </div>
         <div className={claseDivOne}>
-        <p  className="mb-10">Carga Viva</p>
-        <label className={claseTwo}>
-          CV techo ultimo piso :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="tn/m2"
-          type="text"
-          value={cv}
-          onChange={(e) => updateCv(e.target.value)}
-        />
-        <label className={claseTwo}>
-          CV techo demás pisos :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="tn/m2"
-          type="text"
-          value={cvr}
-          onChange={(e) => updateCvr(e.target.value)}
-        />
-        <label className={claseTwo}>
-          ancho del plano :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="m"
-          type="text"
-          value={dx_t}
-          onChange={(e) => updateDx_t(e.target.value)}
-        />
-        <label className={claseTwo}>
-          largo del plano :
-        </label>
-        <input
-          className={commonInputClasses} placeholder="m"
-          type="text"
-          value={dy_t}
-          onChange={(e) => updateDy_t(e.target.value)}
-        />
+          <p className="mb-10">Carga Viva</p>
+          <label className={claseTwo}>CV techo ultimo piso :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="tn/m2"
+            type="number"
+            value={cv}
+            onChange={(e) => updateCv(e.target.value)}
+          />
+          <label className={claseTwo}>CV techo demás pisos :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="tn/m2"
+            type="number"
+            value={cvr}
+            onChange={(e) => updateCvr(e.target.value)}
+          />
+          <label className={claseTwo}>ancho del plano :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="m"
+            type="number"
+            value={dx_t}
+            onChange={(e) => updateDx_t(e.target.value)}
+          />
+          <label className={claseTwo}>largo del plano :</label>
+          <input
+            className={commonInputClasses}
+            placeholder="m"
+            type="number"
+            value={dy_t}
+            onChange={(e) => updateDy_t(e.target.value)}
+          />
         </div>
         <div className={claseDivOne}>
-        <p  className="mb-2">Datos extras</p>
-        <label className={claseTwo}>Autor:</label>
-          <input className={commonInputClasses} type="text" placeholder="Barreto Darli" value={inputValue1} onChange={(e) => updateInputValue1(e.target.value)}/>
+          <p className="mb-2">Datos extras</p>
+          <label className={claseTwo}>Autor:</label>
+          <input
+            className={commonInputClasses}
+            type="text"
+            placeholder="Barreto Darli"
+            value={inputValue1}
+            onChange={(e) => updateInputValue1(e.target.value)}
+          />
           <label className={claseTwo}>Ocupación/Uso</label>
-          <input className={commonInputClasses} type="text" placeholder="Escuelas, etc" value={ocupacionUso} onChange={(e) => updateOcupacionUso(e.target.value)}/>
+          <input
+            className={commonInputClasses}
+            type="text"
+            placeholder="Escuelas, etc"
+            value={ocupacionUso}
+            onChange={(e) => updateOcupacionUso(e.target.value)}
+          />
           <label className={claseTwo}>Altura de entrepiso:</label>
-          <input className={commonInputClasses} type="text" placeholder="m" value={inputValue4} onChange={(e) => updateInputValue4(e.target.value)}/>
+          <input
+            className={commonInputClasses}
+            type="number"
+            placeholder="m"
+            value={inputValue4}
+            onChange={(e) => updateInputValue4(e.target.value)}
+          />
           <label className={claseTwo}>Profundidad de desplante:</label>
-          <input className={commonInputClasses} type="text" placeholder="m" value={inputValue5} onChange={(e) => updateInputValue5(e.target.value)}/> 
+          <input
+            className={commonInputClasses}
+            type="number"
+            placeholder="m"
+            value={inputValue5}
+            onChange={(e) => updateInputValue5(e.target.value)}
+          />
           <label className={claseTwo}>Espesor de la platea(si tuviera):</label>
-          <input className={commonInputClasses} type="text" placeholder="cm" value={inputValue6} onChange={(e) => updateInputValue6(e.target.value)}/>
-
+          <input
+            className={commonInputClasses}
+            type="number"
+            placeholder="cm"
+            value={inputValue6}
+            onChange={(e) => updateInputValue6(e.target.value)}
+          />
         </div>
-  
-        
-      </div> 
+      </div>
     </>
   );
 }

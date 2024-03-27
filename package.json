@@ -12,6 +12,8 @@
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
     "@react-pdf/renderer": "^3.3.8",
+    "docx": "^8.5.0",
+    "file-saver": "^2.0.5",
     "framer-motion": "^10.17.9",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
